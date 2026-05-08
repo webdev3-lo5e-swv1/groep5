@@ -1,5 +1,4 @@
 -- MBO Cinemas database schema
--- Gebruik in XAMPP: open phpMyAdmin, maak database aan en importeer dit bestand
 
 CREATE DATABASE IF NOT EXISTS mbo_cinemas;
 USE mbo_cinemas;
