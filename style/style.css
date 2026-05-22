@@ -362,3 +362,36 @@ img {
     justify-content: space-between;
     align-items: center;
 }
+
+/* ========================
+   BODY LAYOUT
+======================== */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main, section {
+    flex: 1;
+}
+
+/* ========================
+   FOOTER
+======================== */
+.footer {
+    background-color: #0a0a0a;
+    border-top: 1px solid var(--border);
+    padding: 32px;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer p {
+    font-size: 12px;
+    color: var(--tekst-grijs);
+}
