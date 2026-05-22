@@ -6,8 +6,11 @@ $huidigePagina = basename($_SERVER['PHP_SELF']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sanae & Mateusz">
+    <meta name="keywords" content="bioscopen, films, popcorn, cinema, reserveren, kijken">
     <title>MBO Cinemas</title>
     <link rel="stylesheet" href="style/style.css">
+
 </head>
 <body>
 
