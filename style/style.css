@@ -1,0 +1,364 @@
+/* ========================
+   VARIABELEN
+======================== */
+:root {
+    --bg: #1a1a1a;
+    --bg-card: #242424;
+    --bg-nav: #111111;
+    --oranje: #FAC034;
+    --oranje-hover: #e0a820;
+    --tekst: #ffffff;
+    --tekst-grijs: #888888;
+    --border: #333333;
+    --radius: 6px;
+}
+
+/* ========================
+   RESET
+======================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--tekst);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ========================
+   KNOPPEN
+======================== */
+.btn-primary {
+    background-color: var(--oranje);
+    color: #000;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--oranje-hover);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--tekst);
+    border: 1px solid var(--border);
+    padding: 8px 18px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.btn-ghost:hover {
+    border-color: var(--oranje);
+    color: var(--oranje);
+}
+
+.btn-primary.small {
+    padding: 5px 12px;
+    font-size: 12px;
+}
+
+/* ========================
+   NAVIGATIE
+======================== */
+.navbar {
+    background-color: var(--bg-nav);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 52px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 24px;
+}
+
+.navbar ul a {
+    font-size: 13px;
+    color: var(--tekst-grijs);
+    transition: color 0.2s;
+}
+
+.navbar ul a:hover,
+.navbar ul a.actief {
+    color: var(--tekst);
+}
+
+.navbar p {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--oranje);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* ========================
+   HERO
+======================== */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    padding: 24px 32px;
+    background: var(--bg-nav);
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-video {
+    background: #0d0d0d;
+    border-radius: var(--radius);
+    aspect-ratio: 16/9;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+    margin: 0;
+}
+
+.hero-video figcaption {
+    font-size: 11px;
+    color: var(--tekst-grijs);
+    letter-spacing: 0.05em;
+}
+
+.hero-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+}
+
+.hero-info small {
+    font-size: 11px;
+    color: var(--tekst-grijs);
+    letter-spacing: 0.08em;
+}
+
+.hero-info h1 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: var(--radius);
+    font-size: 11px;
+    color: var(--tekst-grijs);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.hero-doorgaan {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    border-radius: var(--radius);
+}
+
+.hero-doorgaan input {
+    accent-color: var(--oranje);
+    margin-right: 6px;
+}
+
+.hero-doorgaan small {
+    color: var(--tekst-grijs);
+    font-size: 11px;
+    margin-left: 20px;
+}
+
+/* ========================
+   ZOEKBALK
+======================== */
+.zoek-sectie {
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.zoek-sectie small {
+    color: var(--tekst-grijs);
+    font-size: 12px;
+}
+
+.zoek-balk {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.zoek-balk input {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--tekst);
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.zoek-balk input:first-child {
+    flex: 1;
+}
+
+.zoek-balk input:focus {
+    border-color: var(--oranje);
+}
+
+/* ========================
+   FILMS SECTIES
+======================== */
+.films-sectie {
+    padding: 32px 32px 16px;
+}
+
+.films-sectie header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.films-sectie h2 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.link-alle {
+    font-size: 11px;
+    color: var(--tekst-grijs);
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+}
+
+.link-alle:hover {
+    color: var(--oranje);
+}
+
+/* ========================
+   FILM GRID
+======================== */
+.films-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.binnenkort-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* ========================
+   FILM KAART
+======================== */
+.film-kaart figure {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    margin: 0 0 10px 0;
+}
+
+.poster-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--tekst-grijs);
+    background: repeating-linear-gradient(
+        45deg,
+        #1e1e1e,
+        #1e1e1e 4px,
+        #222 4px,
+        #222 8px
+    );
+}
+
+.film-kaart h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.film-meta {
+    font-size: 11px;
+    color: var(--tekst-grijs);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.film-acties {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
