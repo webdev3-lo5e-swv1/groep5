@@ -1,0 +1,794 @@
+[
+  {
+    "titel": "The Shawshank Redemption",
+    "jaar": 1994,
+    "rating": 9.3,
+    "poster": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=500&q=80",
+    "beschrijving": "Twee gevangenen bouwen over een aantal jaren een bijzondere band op, waarin ze troost en uiteindelijke verlossing vinden door middel van goed fatsoen.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Godfather",
+    "jaar": 1972,
+    "rating": 9.2,
+    "poster": "https://images.unsplash.com/photo-1533928298208-27ff66555d8d?w=500&q=80",
+    "beschrijving": "De vergrijzende patriarch van een georganiseerde misdaadfamilie draagt de controle over zijn ondergrondse imperium over aan zijn onwillige jongste zoon.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Dark Knight",
+    "jaar": 2008,
+    "rating": 9.0,
+    "poster": "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=500&q=80",
+    "beschrijving": "Wanneer de dreiging die bekend staat als de Joker chaos zaait in Gotham, moet Batman een van de grootste psychologische en fysieke tests van zijn gerechtigheid doorstaan.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Godfather Part II",
+    "jaar": 1974,
+    "rating": 9.0,
+    "poster": "https://images.unsplash.com/photo-1543536448-d209d2d13a1c?w=500&q=80",
+    "beschrijving": "De vroege levensjaren en carrière van Vito Corleone in het New York van de jaren 1920 worden getoond, terwijl zijn zoon Michael zijn grip op het misdaadsyndicaat verstevigt.",
+    "PEGI": 16
+  },
+  {
+    "titel": "12 Angry Men",
+    "jaar": 1957,
+    "rating": 9.0,
+    "poster": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=500&q=80",
+    "beschrijving": "De jury in een moordzaak in New York probeert een unaniem besluit te nemen, waarbij één jurylid de rest dwingt het bewijsmateriaal heroverwegen.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Schindler's List",
+    "jaar": 1993,
+    "rating": 9.0,
+    "poster": "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500&q=80",
+    "beschrijving": "In het door de nazi's bezette Polen tijdens de Tweede Wereldoorlog raakt de industrieel Oskar Schindler bezorgd om zijn Joodse arbeiders nadat hij getuige is geweest van hun vervolging.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Lord of the Rings: The Return of the King",
+    "jaar": 2003,
+    "rating": 9.0,
+    "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&q=80",
+    "beschrijving": "Gandalf en Aragorn leiden de Wereld van de Mensen tegen het leger van Sauron om de blik af te leiden van Frodo en Sam terwijl zij de Ene Ring naderen.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Pulp Fiction",
+    "jaar": 1994,
+    "rating": 8.9,
+    "poster": "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=500&q=80",
+    "beschrijving": "De levens van twee bendehuurmoordenaars, een bokser, de gangster-vrouw van een bendeleider van een restaurantovervaller verstrengelen zich in vier verhalen.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Lord of the Rings: The Fellowship of the Ring",
+    "jaar": 2001,
+    "rating": 8.8,
+    "poster": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=500&q=80",
+    "beschrijving": "Een tamme Hobbit uit de Gouw en acht metgezellen beginnen aan een reis om de Ene Ring te vernietigen en zo Midden-aarde te redden van de Duistere Heer Sauron.",
+    "PEGI": 12
+  },
+  {
+    "titel": "The Good, the Bad and the Ugly",
+    "jaar": 1966,
+    "rating": 8.8,
+    "poster": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=500&q=80",
+    "beschrijving": "Een premiejachtscam brengt twee mannen samen in een ongemakkelijke alliantie tegen een derde man in een race om een fortuin aan goud te vinden.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Forrest Gump",
+    "jaar": 1994,
+    "rating": 8.8,
+    "poster": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500&q=80",
+    "beschrijving": "De geschiedenis van de Verenigde Staten van de jaren 50 tot de jaren 80 ontvouwt zich vanuit het perspectief van een man uit Alabama met een IQ van 75.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Fight Club",
+    "jaar": 1999,
+    "rating": 8.7,
+    "poster": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=500&q=80",
+    "beschrijving": "Een kantoormedewerker met slapeloosheid en een zorgeloze zeepmaker richten een ondergrondse vechtclub op die al snel ontaardt in iets veel groters.",
+    "PEGI": 18
+  },
+  {
+    "titel": "The Lord of the Rings: The Two Towers",
+    "jaar": 2002,
+    "rating": 8.8,
+    "poster": "https://images.unsplash.com/photo-1435575653489-b0873ec954e2?w=500&q=80",
+    "beschrijving": "Terwijl Frodo en Sam dichter bij Mordor komen met de hulp van Gollem, houdt het verdeelde genootschap stand tegen Saurons nieuwe bondgenoot Saruman.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Inception",
+    "jaar": 2010,
+    "rating": 8.8,
+    "poster": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500&q=80",
+    "beschrijving": "Een dief die bedrijfsgeheimen steelt via het gebruik van droom-sharing technologie krijgt de omgekeerde taak: het planten van een idee in de geest van een CEO.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Star Wars: Episode V - The Empire Strikes Back",
+    "jaar": 1980,
+    "rating": 8.7,
+    "poster": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&q=80",
+    "beschrijving": "Nadat het Rijk de Rebellen zwaar heeft getroffen op de ijsplaneet Hoth, begint Luke Skywalker zijn Jedi-training bij Yoda, terwijl zijn vrienden worden achtervolgd.",
+    "PEGI": 12
+  },
+  {
+    "titel": "The Matrix",
+    "jaar": 1999,
+    "rating": 8.7,
+    "poster": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&q=80",
+    "beschrijving": "Wanneer een mooie vreemdeling computerhacker Neo meeneemt naar een grimmige onderwereld, ontdekt hij de schokkende waarheid: zijn realiteit is een computersimulatie.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Goodfellas",
+    "jaar": 1990,
+    "rating": 8.7,
+    "poster": "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=500&q=80",
+    "beschrijving": "Het verhaal van Henry Hill en zijn leven in de maffia, waarin hij de relatie met zijn vrouw Karen en zijn maffiapartners Jimmy Conway en Tommy DeVito doorloopt.",
+    "PEGI": 16
+  },
+  {
+    "titel": "One Flew Over the Cuckoo's Nest",
+    "jaar": 1975,
+    "rating": 8.7,
+    "poster": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&q=80",
+    "beschrijving": "In een psychiatrische inrichting wakkert een rebels personage een opstand aan onder de patiënten tegen de dictatoriale hoofdzuster.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Se7en",
+    "jaar": 1995,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=500&q=80",
+    "beschrijving": "Twee rechercheurs, een groentje en een veteraan, jagen op een seriemoordenaar wiens motieven gebaseerd zijn op de zeven hoofdzonden.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Interstellar",
+    "jaar": 2014,
+    "rating": 8.7,
+    "poster": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=500&q=80",
+    "beschrijving": "Wanneer de aarde in de toekomst onleefbaar dreigt te worden, reist een team van ontdekkingsreizigers door een wormgat in de ruimte om het voortbestaan van de mensheid te redden.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Seven Samurai",
+    "jaar": 1954,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1547891654-e66ed7edd96c?w=500&q=80",
+    "beschrijving": "Boeren in een door bandieten geteisterd dorp huren zeven werkloze samoerai in om hen te verdedigen tegen diefstal en plunderingen.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Silence of the Lambs",
+    "jaar": 1991,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1505632951788-77d0238a1a40?w=500&q=80",
+    "beschrijving": "Een jonge FBI-studente heeft de hulp nodig van een opgesloten manipulatieve kannibalistische psychiater om een andere seriemoordenaar te vangen.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Saving Private Ryan",
+    "jaar": 1998,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1560067174-c5a3a8f37060?w=500&q=80",
+    "beschrijving": "Na de invasie in Normandië gaat een groep Amerikaanse soldaten achter de vijandelijke linies om een parachutist te redden wiens broers zijn gesneuveld.",
+    "PEGI": 16
+  },
+  {
+    "titel": "City of God",
+    "jaar": 2002,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&q=80",
+    "beschrijving": "In de sloppenwijken van Rio de Janeiro groeien twee jongens op die elk een heel ander pad kiezen: de een wordt fotograaf, de ander een meedogenloze drugsdealer.",
+    "PEGI": 18
+  },
+  {
+    "titel": "Life Is Beautiful",
+    "jaar": 1997,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=500&q=80",
+    "beschrijving": "Wanneer een Joodse bibliothecaris en zijn zoon slachtoffer worden van de Holocaust, gebruikt hij een perfecte mix van wilskracht, humor en fantasie om zijn zoon te beschermen.",
+    "PEGI": 12
+  },
+  {
+    "titel": "The Green Mile",
+    "jaar": 1999,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1448375240586-882707db888b?w=500&q=80",
+    "beschrijving": "De levens van bewakers op de dodencellen veranderen ingrijpend wanneer ze ontdekken dat een van hun gevangenen, beschuldigd van moord, een mystieke gave bezit.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Star Wars: Episode IV - A New Hope",
+    "jaar": 1977,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=500&q=80",
+    "beschrijving": "Luke Skywalker bundelt zijn krachten met een Jedi-ridder, een arrogante piloot en twee droids om het universum te redden van de Death Star van het Keizerrijk.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Terminator 2: Judgment Day",
+    "jaar": 1991,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1531581147762-5a51222139ee?w=500&q=80",
+    "beschrijving": "Een cyborg, identiek aan degene die faalde om Sarah Connor te vermoorden, moet nu haar tienerzoon John Connor beschermen tegen een geavanceerdere, vloeibare cyborg.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Spirited Away",
+    "jaar": 2001,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&q=80",
+    "beschrijving": "Tijdens de verhuizing van haar familie naar de buitenwijken dwaalt een 10-jarig meisje af naar een wereld die geregeerd wordt door goden, heksen en geesten.",
+    "PEGI": 7
+  },
+  {
+    "titel": "Back to the Future",
+    "jaar": 1985,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500&q=80",
+    "beschrijving": "Marty McFly, een 17-jarige middelbare scholier, wordt per ongeluk 30 jaar in het verleden gestuurd in een tijdmachine uitgevonden door zijn vriend Doc Brown.",
+    "PEGI": 7
+  },
+  {
+    "titel": "The Pianist",
+    "jaar": 2002,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=500&q=80",
+    "beschrijving": "Een Pools-Joodse muzikant worstelt om te overleven in de vernietiging van het getto van Warschau tijdens de Tweede Wereldoorlog.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Parasite",
+    "jaar": 2019,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=500&q=80",
+    "beschrijving": "Hebzucht en klassendiscriminatie bedreigen de symbiotische relatie tussen de rijke familie Park en de arme familie Kim.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Psycho",
+    "jaar": 1960,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=500&q=80",
+    "beschrijving": "Een secretaresse uit Phoenix verduistert veertigduizend dollar van de klant van haar baas, gaat op de vlucht en checkt in bij een afgelegen motel.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Gladiator",
+    "jaar": 2000,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=500&q=80",
+    "beschrijving": "Een voormalige Romeinse generaal zint op wraak tegen de corrupte keizer die zijn familie heeft vermoord en hem tot slaaf heeft gemaakt als gladiator.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Lion King",
+    "jaar": 1994,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=500&q=80",
+    "beschrijving": "Een jonge leeuwenprins ontvlucht zijn koninkrijk na de moord op zijn vader, om vervolgens de betekenis van verantwoordelijkheid en moed te leren.",
+    "PEGI": 3
+  },
+  {
+    "titel": "The Departed",
+    "jaar": 2006,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=500&q=80",
+    "beschrijving": "Een undercoveragent en een mol binnen de politie proberen elkaar te identificeren terwijl ze infiltreren in een Ierse bende in Boston.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Whiplash",
+    "jaar": 2014,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=500&q=80",
+    "beschrijving": "Een veelbelovende jonge drummer schrijft zich in bij een moordend muziekconservatorium waar zijn dromen van grootsheid worden begeleid door een meedogenloze instructeur.",
+    "PEGI": 12
+  },
+  {
+    "titel": "The Prestige",
+    "jaar": 2006,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1516280440614-37939bbacd6a?w=500&q=80",
+    "beschrijving": "Na een tragisch ongeluk voeren twee goochelaars in het 19e-eeuwse Londen een bittere strijd om de ultieme illusionist te worden, waarbij ze alles opofferen.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Alien",
+    "jaar": 1979,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=500&q=80",
+    "beschrijving": "De bemanning van een commercieel ruimteschip stuit op een onbekende levensvorm op een verre planeet, die vervolgens aan boord weet te dringen.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Usual Suspects",
+    "jaar": 1995,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=500&q=80",
+    "beschrijving": "De enige overlevende van een bloedige schietpartij op een schip vertelt de politie een ingewikkeld verhaal over vijf criminelen die elkaar ontmoetten bij een line-up.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Casablanca",
+    "jaar": 1942,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=500&q=80",
+    "beschrijving": "In december 1941 worstelt een cynische Amerikaanse nachtclubeigenaar in Marokko met de beslissing of hij zijn voormalige geliefde en haar man moet helpen ontsnappen.",
+    "PEGI": 12
+  },
+  {
+    "titel": "American History X",
+    "jaar": 1998,
+    "rating": 8.5,
+    "poster": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=500&q=80",
+    "beschrijving": "Een voormalige neo-nazi groepsleider probeert te voorkomen dat zijn jongere broer hetzelfde destructieve pad bewandelt dat hijzelf heeft afgelegd.",
+    "PEGI": 18
+  },
+  {
+    "titel": "Memento",
+    "jaar": 2000,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=500&q=80",
+    "beschrijving": "Een man met kortetermijngeheugenverlies probeert de moordenaar van zijn vrouw op te sporen met behulp van polaroids en tatoeages op zijn lichaam.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Great Dictator",
+    "jaar": 1940,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1572945281861-68b29d00e94e?w=500&q=80",
+    "beschrijving": "Dictator Adenoid Hynkel probeert zijn imperium uit te breiden terwijl een arme Joodse kapper probeert te ontsnappen aan de vervolging door het regime.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Django Unchained",
+    "jaar": 2012,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1533240332313-0db49b439ad3?w=500&q=80",
+    "beschrijving": "Met de hulp van een Duitse premiejager begint een bevrijde slaaf aan een gevaarlijke missie om zijn vrouw te redden uit de handen van een meedogenloze plantage-eigenaar.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Spider-Man: Into the Spider-Verse",
+    "jaar": 2018,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=500&q=80",
+    "beschrijving": "Tiener Miles Morales wordt de nieuwe Spider-Man en moet samenwerken met alternatieve versies van de superheld uit andere dimensies om een universele dreiging te stoppen.",
+    "PEGI": 9
+  },
+  {
+    "titel": "WALL-E",
+    "jaar": 2008,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1608962714006-25ac937f374d?w=500&q=80",
+    "beschrijving": "In de verre toekomst ontmoet een kleine, door de mensheid achtergelaten afvalrobot op een verlaten aarde een hypermoderne sonde, wat leidt tot een kosmisch avontuur.",
+    "PEGI": 3
+  },
+  {
+    "titel": "The Shining",
+    "jaar": 1980,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=500&q=80",
+    "beschrijving": "Een gezin trekt voor de winter in een afgelegen hotel waar een sinistere aanwezigheid de vader aanzet tot geweld, terwijl zijn paranormale zoon gruwelijke visioenen krijgt.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Avengers: Infinity War",
+    "jaar": 2018,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1634828221818-50d5857f85ff?w=500&q=80",
+    "beschrijving": "De Avengers en hun bondgenoten moeten bereid zijn alles op te offeren in een poging om de machtige Thanos te verslaan voordat hij het universum vernietigt.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Amadeus",
+    "jaar": 1984,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=500&q=80",
+    "beschrijving": "Het ongelooflijke verhaal van Wolfgang Amadeus Mozart, verteld vanuit het perspectief van zijn jaloerse rivaal Antonio Salieri, die claimt hem te hebben vermoord.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Oldboy",
+    "jaar": 2003,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1534951009808-766178b47a4f?w=500&q=80",
+    "beschrijving": "Nadat hij vijftien jaar lang zonder reden is opgesloten, wordt een man plotseling vrijgelaten en krijgt hij vijf dagen de tijd om zijn ontvoerder te vinden.",
+    "PEGI": 18
+  },
+  {
+    "titel": "Coco",
+    "jaar": 2017,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=500&q=80",
+    "beschrijving": "De jonge Miguel droomt ervan een muzikant te worden en belandt per ongeluk in het kleurrijke Land van de Doden, waar hij zijn familiegeschiedenis ontrafelt.",
+    "PEGI": 6
+  },
+  {
+    "titel": "The Dark Knight Rises",
+    "jaar": 2012,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&q=80",
+    "beschrijving": "Acht jaar na de gebeurtenissen rond de Joker wordt Gotham City geconfronteerd met een nieuwe, meedogenloze terrorist genaamd Bane, wat Batman dwingt terug te keren.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Joker",
+    "jaar": 2019,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1553514029-2d185c09ef74?w=500&q=80",
+    "beschrijving": "In Gotham City drijft de mentale achteruitgang en isolatie van de mislukte komiek Arthur Fleck hem tot een leven van nihilistische criminaliteit en chaos.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Your Name.",
+    "jaar": 2016,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1502657877623-f66bf489d236?w=500&q=80",
+    "beschrijving": "Twee tieners die elkaar niet kennen ontdekken dat ze op mysterieuze wijze van lichaam wisselen, wat leidt tot een diepe zoektocht om elkaar te ontmoeten.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Princess Mononoke",
+    "jaar": 1997,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&q=80",
+    "beschrijving": "Op een zoektocht om een dodelijke vloek te genezen, raakt een jonge prins betrokken bij een oorlog tussen de bosgoden en een menselijke mijnkolonie.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Braveheart",
+    "jaar": 1995,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1569003339405-ea396a5a8a90?w=500&q=80",
+    "beschrijving": "De Schotse krijger William Wallace leidt zijn landgenoten in een felle opstand tegen de tirannieke Engelse koning Edward I om de vrijheid op te eisen.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Good Will Hunting",
+    "jaar": 1997,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=500&q=80",
+    "beschrijving": "Will Hunting, een geniale maar getraumatiseerde conciërge bij MIT, vindt met de hulp van een psycholoog de moed om zijn leven een nieuwe richting te geven.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Toy Story",
+    "jaar": 1995,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=500&q=80",
+    "beschrijving": "Een cowboypop raakt diep bezorgd over zijn positie als favoriete speelgoed van een jongen wanneer een flitsende nieuwe astronauten-actiefiguur arriveert.",
+    "PEGI": 3
+  },
+  {
+    "titel": "Requiem for a Dream",
+    "jaar": 2000,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=500&q=80",
+    "beschrijving": "De op drugs gebaseerde utopieën van vier inwoners van Coney Island storten volledig in wanneer hun verslavingen hun levens overnemen.",
+    "PEGI": 18
+  },
+  {
+    "titel": "Inglourious Basterds",
+    "jaar": 2009,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&q=80",
+    "beschrijving": "In het door de nazi's bezette Frankrijk beraamt een groep Joods-Amerikaanse soldaten een complot om de leiders van het Derde Rijk uit te schakelen.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Eternal Sunshine of the Spotless Mind",
+    "jaar": 2004,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&q=80",
+    "beschrijving": "Wanneer hun relatie strandt, ondergaat een stel een medische procedure om alle herinneringen aan elkaar permanent uit hun geheugen te laten wissen.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Amélie",
+    "jaar": 2001,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=500&q=80",
+    "beschrijving": "Een naïef meisje in Parijs met haar eigen gevoel voor gerechtigheid besluit de levens van de mensen om haar heen in stilte te verbeteren.",
+    "PEGI": 6
+  },
+  {
+    "titel": "Reservoir Dogs",
+    "jaar": 1992,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?w=500&q=80",
+    "beschrijving": "Wanneer een eenvoudige diamantoverval catastrofaal mislukt, vermoeden de overelen criminelen dat een van hen een undercover politie-informant is.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Full Metal Jacket",
+    "jaar": 1987,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1590247813693-5541d1c609fd?w=500&q=80",
+    "beschrijving": "Een pragmatische Amerikaanse marinier observeert de ontmenselijkende effecten die de Vietnamoorlog heeft op zijn mede-rekruten vanaf de basistraining.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Scarface",
+    "jaar": 1983,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1568832359672-e36cf5d74f54?w=500&q=80",
+    "beschrijving": "In Miami in 1980 neemt een Cubaanse immigrant een drugskartel over en bezwijkt uiteindelijk aan de paranoia en hebzucht die zijn imperium met zich meebrengt.",
+    "PEGI": 18
+  },
+  {
+    "titel": "Up",
+    "jaar": 2009,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=500&q=80",
+    "beschrijving": "De 78-jarige Carl Fredricksen reist naar Zuid-Amerika in zijn huis dat is uitgerust met duizenden ballonnen, maar ontdekt per ongeluk een jonge verstekeling.",
+    "PEGI": 3
+  },
+  {
+    "titel": "Heat",
+    "jaar": 1995,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&q=80",
+    "beschrijving": "Een bende professionele bankrovers begint de persoonlijke druk te voelen wanneer een geobsedeerde LAPD-rechercheur weigert hun spoor los te laten.",
+    "PEGI": 16
+  },
+  {
+    "titel": "L.A. Confidential",
+    "jaar": 1997,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1422464804701-7d002a5dd676?w=500&q=80",
+    "beschrijving": "Terwijl de corruptie tiert in het Los Angeles van de jaren 50, onderzoeken drie zeer verschillende agenten een reeks moorden met hun eigen moraal.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Die Hard",
+    "jaar": 1988,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1542204179-0525112795a5?w=500&q=80",
+    "beschrijving": "Een politieagent uit New York probeert zijn vrouw en verschillende anderen te redden die tijdens een kerstfeest zijn gijzeld door terroristen in een wolkenkrabber.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Metropolis",
+    "jaar": 1927,
+    "rating": 8.3,
+    "poster": "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=500&q=80",
+    "beschrijving": "In een futuristische stad die scherp verdeeld is tussen arbeiders en denkers, probeert de zoon van de stadsmeester de klassen dichter bij elkaar te brengen.",
+    "PEGI": 6
+  },
+  {
+    "titel": "Snatch",
+    "jaar": 2000,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1626775238053-4315516eedc9?w=500&q=80",
+    "beschrijving": "Onscrupuleuze bokspromotors, gewelddadige boekmakers, een Russische gangster en incompetente dieven vechten allemaal om een gestolen diamant te bemachtigen.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Truman Show",
+    "jaar": 1998,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=500&q=80",
+    "beschrijving": "Een verzekeringsverkoper ontdekt tot zijn grote schrik dat zijn hele leven in werkelijkheid een zorgvuldig geregisseerde realityshow is die wereldwijd wordt uitgezonden.",
+    "PEGI": 6
+  },
+  {
+    "titel": "The Big Lebowski",
+    "jaar": 1998,
+    "rating": 8.1,
+    "poster": "https://images.unsplash.com/photo-1580130775562-0ef927a5f275?w=500&q=80",
+    "beschrijving": "Los Angeles luie stakker 'The Dude' Lebowski wordt verward met een miljonair met dezelfde naam en raakt verstrikt in een bizar ontvoeringscomplot.",
+    "PEGI": 12
+  },
+  {
+    "titel": "The Sixth Sense",
+    "jaar": 1999,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=500&q=80",
+    "beschrijving": "Een kinderpsycholoog behandelt een angstige jonge jongen die beweert dat hij de geesten van overleden mensen kan zien en met hen kan praten.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Jurassic Park",
+    "jaar": 1993,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1568430462989-4b16f61d2cfc?w=500&q=80",
+    "beschrijving": "Een pragmatische paleontoloog die een geheim pretpark bezoekt, moet een groep kinderen beschermen wanneer een stroomstoring de gekloonde dinosauriërs bevrijdt.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Finding Nemo",
+    "jaar": 2003,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80",
+    "beschrijving": "Nadat zijn zoon is gevangen in het Groot Barrièrerif en meegenomen naar Sydney, begint een timide clownvis aan een epische reis om hem thuis te brengen.",
+    "PEGI": 3
+  },
+  {
+    "titel": "No Country for Old Men",
+    "jaar": 2007,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500&q=80",
+    "beschrijving": "Geweld en chaos ontstaan nadat een jager stuit op een mislukte drugsdeal en besluit een koffer met twee miljoen dollar aan contanten mee te nemen.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Kill Bill: Vol. 1",
+    "jaar": 2003,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500&q=80",
+    "beschrijving": "Na vier jaar in een coma te hebben gelegen, ontwaakt een voormalige huurmoordenares en begint ze aan een bloedige wraaktocht tegen het team dat haar heeft verraden.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Pan's Labyrinth",
+    "jaar": 2006,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?w=500&q=80",
+    "beschrijving": "In het fascistische Spanje van 1944 ontsnapt de jonge stiefdochter van een sadistische legerofficier in een even angstaanjagende als prachtige fantasiewereld.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Wolf of Wall Street",
+    "jaar": 2013,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500&q=80",
+    "beschrijving": "Gebaseerd op het waargebeurde verhaal van Jordan Belfort, van zijn opkomst tot een rijke effectenmakelaar tot zijn uiteindelijke ondergang door fraude en corruptie.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Shutter Island",
+    "jaar": 2010,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?w=500&q=80",
+    "beschrijving": "In 1954 onderzoekt een Amerikaanse marshal de mysterieuze verdwijning van een moordenares die is ontsnapt uit een psychiatrische inrichting op een eiland.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Mad Max: Fury Road",
+    "jaar": 2015,
+    "rating": 8.1,
+    "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&q=80",
+    "beschrijving": "In een post-apocalyptische woestenij slaat een rebelse vrouw de handen ineen met een zwerver om te ontsnappen aan een tirannieke cultleider en zijn leger.",
+    "PEGI": 16
+  },
+  {
+    "titel": "V for Vendetta",
+    "jaar": 2005,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1572945281861-68b29d00e94e?w=500&q=80",
+    "beschrijving": "In een toekomstig totalitair Groot-Brittannië gebruikt een mysterieuze vrijheidsstrijder, bekend als V, terroristische tactieken om de bevolking aan te zetten tot revolutie.",
+    "PEGI": 16
+  },
+  {
+    "titel": "The Grand Budapest Hotel",
+    "jaar": 2014,
+    "rating": 8.1,
+    "poster": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80",
+    "beschrijving": "Een beroemde conciërge in een Europees luxehotel raakt betrokken bij een strijd om een enorm familiefortuin nadat een van zijn gasten overlijdt.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Inside Out",
+    "jaar": 2015,
+    "rating": 8.1,
+    "poster": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80",
+    "beschrijving": "Na de verhuizing van haar familie proberen de gepersonifieerde emoties in de geest van een jong meisje haar te helpen navigeren door haar nieuwe leven.",
+    "PEGI": 3
+  },
+  {
+    "titel": "The Thing",
+    "jaar": 1982,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=500&q=80",
+    "beschrijving": "Een onderzoeksteam op Antarctica wordt geconfronteerd met een buitenaardse levensvorm die de gedaante van zijn slachtoffers perfect kan aannemen.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Howl's Moving Castle",
+    "jaar": 2004,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&q=80",
+    "beschrijving": "Wanneer een onzeker jong meisje door een jaloerse heks wordt vervloekt met het lichaam van een oude vrouw, zoekt ze hulp bij een jonge, excentrieke tovenaar.",
+    "PEGI": 6
+  },
+  {
+    "titel": "Lock, Stock and Two Smoking Barrels",
+    "jaar": 1998,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?w=500&q=80",
+    "beschrijving": "Vier vrienden uit de achterbuurten van Londen verliezen een illegaal kaartspel en moeten binnen een week een gigantische schuld afbetalen aan een machtige gangster.",
+    "PEGI": 16
+  },
+  {
+    "titel": "A Beautiful Mind",
+    "jaar": 2001,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=500&q=80",
+    "beschrijving": "Het leven van John Nash, een briljante maar asociale wiskundige, verandert in een nachtmerrie wanneer hij de diagnose schizofrenie krijgt.",
+    "PEGI": 12
+  },
+  {
+    "titel": "Casino",
+    "jaar": 1995,
+    "rating": 8.2,
+    "poster": "https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=500&q=80",
+    "beschrijving": "In Las Vegas proberen twee maffia-vrienden een gokimperium te runnen, maar hebzucht, jaloezie en een verleidelijke vrouw drijven hen uit elkaar.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Monsters, Inc.",
+    "jaar": 2001,
+    "rating": 8.1,
+    "poster": "https://images.unsplash.com/photo-1560942485-b2a11cc13456?w=500&q=80",
+    "beschrijving": "Twee professionele monsters die kinderbange-energie verzamelen voor hun stad, raken in paniek wanneer er per ongeluk een menselijk peutertje hun wereld binnenloopt.",
+    "PEGI": 3
+  },
+  {
+    "titel": "Ratatouille",
+    "jaar": 2007,
+    "rating": 8.1,
+    "poster": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=500&q=80",
+    "beschrijving": "Een Franse rat met een uitzonderlijk smaakgevoel sluit een geheime alliantie met een onhandige keukenhulp om een topkok te worden in een chic restaurant in Parijs.",
+    "PEGI": 3
+  },
+  {
+    "titel": "Spider-Man: Across the Spider-Verse",
+    "jaar": 2023,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1608889174639-414d9f697836?w=500&q=80",
+    "beschrijving": "Miles Morales keert terug voor een episch avontuur dat de vriendelijke buurtheld uit Brooklyn door het multiversum katapulteert om het op te nemen tegen een nieuwe schurk.",
+    "PEGI": 9
+  },
+  {
+    "titel": "Oppenheimer",
+    "jaar": 2023,
+    "rating": 8.4,
+    "poster": "https://images.unsplash.com/photo-1447069387593-a5de0862481e?w=500&q=80",
+    "beschrijving": "Het biografische verhaal van de theoretisch fysicus J. Robert Oppenheimer, die de leiding had over het Manhattanproject en de creatie van de allereerste atoombom.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Dune: Part Two",
+    "jaar": 2024,
+    "rating": 8.6,
+    "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&q=80",
+    "beschrijving": "Paul Atreides verenigt zich met Chani en de Vrijmans terwijl hij op een oorlogspad van wraak zint tegen de samenzweerders die zijn familie hebben vernietigd.",
+    "PEGI": 12
+  },
+  {
+    "titel": "The Incredibles",
+    "jaar": 2004,
+    "rating": 8.0,
+    "poster": "https://images.unsplash.com/photo-1561149877-84d268ba65b8?w=500&q=80",
+    "beschrijving": "Een familie van undercover superhelden, die proberen te leven als normale burgers, wordt gedwongen weer in actie te komen om de wereld te redden.",
+    "PEGI": 6
+  },
+  {
+    "titel": "Blade Runner 2047",
+    "jaar": 2017,
+    "rating": 8.0,
+    "poster": "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=500&q=80",
+    "beschrijving": "Een nieuwe blade runner, LAPD-agent K, ontrafelt een lang begraven geheim dat de potentie heeft om wat er nog over is van de samenleving in chaos te storten.",
+    "PEGI": 16
+  },
+  {
+    "titel": "Arrival",
+    "jaar": 2016,
+    "rating": 7.9,
+    "poster": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&q=80",
+    "beschrijving": "Wanneer mysterieuze ruimteschepen over de hele wereld landen, krijgt een taalkundige de leiding over een eliteteam om te communiceren met de buitenaardse wezens.",
+    "PEGI": 12
+  }
+]

@@ -33,30 +33,9 @@ $stmt3 = $db->query("
     LIMIT 1
 ");
 $featured = $stmt3->fetch();
-?>
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MBO Cinemas</title>
-    <link rel="stylesheet" href="style/style.css">
-</head>
-<body>
 
-<nav class="navbar">
-    <span class="logo"><span class="logo-dot"></span> MBO Cinemas</span>
-    <ul>
-        <li><a href="index.php" class="actief">Films</a></li>
-        <li><a href="films.php">Bioscopen</a></li>
-        <li><a href="#">Aanbiedingen</a></li>
-        <li><a href="#">Over ons</a></li>
-    </ul>
-    <p>
-        <a href="login.php" class="btn-ghost">Inloggen</a>
-        <a href="films.php" class="btn-primary">Reserveer</a>
-    </p>
-</nav>
+require_once 'header.php';
+?>
 
 <?php if ($featured): ?>
 <section class="hero">
@@ -101,7 +80,7 @@ $featured = $stmt3->fetch();
         <a href="films.php" class="link-alle">13 FILMS · ALLE VESTIGINGEN</a>
     </header>
     <?php if (empty($films_nu)): ?>
-        <p>Geen films beschikbaar.</p>
+        <p class="geen-films">Geen films beschikbaar.</p>
     <?php else: ?>
     <ul class="films-grid">
         <?php foreach ($films_nu as $film): ?>
@@ -147,6 +126,4 @@ $featured = $stmt3->fetch();
     </ul>
 </section>
 
-<script src="frontend/js/main.js"></script>
-</body>
-</html>
+<?php require_once 'footer.php'; ?>
