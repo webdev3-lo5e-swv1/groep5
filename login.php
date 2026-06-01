@@ -1,14 +1,14 @@
-<?php include 'includes/header.php'; ?>
+<?php include 'header.php'; ?>
 
 <link rel="stylesheet" href="css/login.css" />
 
 <div class="login-wrapper">
 
     <div class="login-foto">
-        <img src="images/jouw-foto.jpg" alt="Sportschoenen" />
+        <img src="images/jouw-foto.jpg" alt="MBO Cinemas" />
         <div class="login-foto__tekst">
-            <h2>Welkom bij SportStep</h2>
-            <p>De beste schoenen voor jou</p>
+            <h2>MBO Cinemas</h2>
+            <p>De beste films voor jou</p>
         </div>
     </div>
 
@@ -147,4 +147,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'footer.php'; ?>
