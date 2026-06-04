@@ -1,10 +1,3 @@
-// ================================================
-// login.js — MBO Cinemas
-// Locatie: frontend/js/pages/login.js
-// Functies: tab wisselen, wachtwoord tonen/verbergen,
-//           wachtwoord sterkte meter (ES modules stijl)
-// ================================================
-
 // ── Tab wisselen ─────────────────────────────────
 function switchTab(tab) {
     const isInloggen = tab === 'inloggen';

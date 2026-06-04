@@ -1,8 +1,4 @@
 <?php
-// User.php — backend/classes/User.php
-// OOP: private properties, constructor, getters, static methods
-// PDO prepared statements — bescherming tegen SQL injectie
-// Tabel: users | kolommen: voornaam, achternaam, email, wachtwoord, rol
 
 require_once __DIR__ . '/../config/db.php';
 
@@ -34,7 +30,7 @@ class User
     public function getWachtwoord(): string{ return $this->wachtwoord; }
     public function getRol(): string      { return $this->rol; }
 
-    // READ — zoek gebruiker op e-mail (prepared statement)
+    //zoek gebruiker op e-mail
     public static function findByEmail(string $email): ?self
     {
         try {
@@ -49,7 +45,7 @@ class User
         }
     }
 
-    // READ — zoek gebruiker op ID
+    //zoek gebruiker op ID
     public static function findById(int $id): ?self
     {
         try {
@@ -64,7 +60,7 @@ class User
         }
     }
 
-    // CREATE — nieuwe gebruiker aanmaken (INSERT met prepared statement)
+    //nieuwe gebruiker aanmaken 
     public static function create(string $voornaam, string $achternaam, string $email, string $hashedWachtwoord): bool
     {
         try {

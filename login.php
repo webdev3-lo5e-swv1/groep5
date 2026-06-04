@@ -1,6 +1,5 @@
 <?php
-// login.php — root van je project
-// Tabel: users | kolommen: voornaam, achternaam, email, wachtwoord, rol
+
 
 require_once 'backend/config/db.php';
 require_once 'backend/classes/User.php';
@@ -19,7 +18,7 @@ $success_register = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // ── INLOGGEN ──────────────────────────────────
+    //INLOGGEN 
     if (isset($_POST['login'])) {
         $activeTab = 'inloggen';
         $email     = htmlspecialchars(trim($_POST['email'] ?? ''));
@@ -41,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-    // ── REGISTREREN ───────────────────────────────
+    //REGISTREREN
     } elseif (isset($_POST['register'])) {
         $activeTab        = 'registreren';
         $voornaam         = htmlspecialchars(trim($_POST['voornaam'] ?? ''));
@@ -96,7 +95,7 @@ require_once 'header.php';
                     onclick="switchTab('registreren')" type="button">Registreren</button>
         </nav>
 
-        <!-- INLOGGEN -->
+      
         <form id="form-inloggen" class="login-form" method="POST"
               style="display:<?= $activeTab === 'inloggen' ? 'flex' : 'none' ?>;">
 
@@ -122,7 +121,7 @@ require_once 'header.php';
             <p class="wissel">Geen account? <a href="#" onclick="switchTab('registreren');return false;">Registreren</a></p>
         </form>
 
-        <!-- REGISTREREN -->
+    
         <form id="form-registreren" class="login-form" method="POST"
               style="display:<?= $activeTab === 'registreren' ? 'flex' : 'none' ?>;">
 
