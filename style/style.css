@@ -660,3 +660,593 @@ main, section {
     .login-visual  { display: none; }
     .login-panel   { border-left: none; padding: 32px 24px; }
 }
+
+
+/* ===== MBO CINEMAS - FILMS OVERZICHT ===== */
+/* Prefix: .films- en #films- zodat het niet mixt met andere pagina's */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* === ROOT VARIABELEN === */
+:root {
+    --films-bg:          #0d0d0d;
+    --films-surface:     #161616;
+    --films-surface2:    #1e1e1e;
+    --films-border:      #2a2a2a;
+    --films-gold:        #f5a623;
+    --films-gold-dim:    #c4831a;
+    --films-text:        #e8e8e8;
+    --films-text-muted:  #888;
+    --films-text-dim:    #555;
+    --films-radius:      8px;
+    --films-radius-sm:   5px;
+    --films-font-display: 'Bebas Neue', sans-serif;
+    --films-font-body:    'DM Sans', sans-serif;
+}
+
+/* === LAYOUT WRAPPER === */
+.films-page {
+    background: var(--films-bg);
+    min-height: 100vh;
+    font-family: var(--films-font-body);
+    color: var(--films-text);
+}
+
+/* === HEADER === */
+.films-header {
+    background: var(--films-surface);
+    border-bottom: 1px solid var(--films-border);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.films-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 60px;
+}
+
+.films-logo {
+    font-family: var(--films-font-display);
+    font-size: 22px;
+    color: var(--films-text);
+    text-decoration: none;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.films-logo span {
+    color: var(--films-gold);
+}
+
+.films-nav {
+    display: flex;
+    gap: 0.25rem;
+    flex: 1;
+}
+
+.films-nav__link {
+    color: var(--films-text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: var(--films-radius-sm);
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+}
+
+.films-nav__link:hover {
+    color: var(--films-text);
+    background: var(--films-surface2);
+}
+
+.films-nav__link--actief {
+    color: var(--films-gold);
+    border-bottom: 2px solid var(--films-gold);
+    border-radius: 0;
+}
+
+.films-header__acties {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.films-header__user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--films-text-muted);
+}
+
+.films-header__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--films-gold);
+    color: var(--films-bg);
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* === BREADCRUMB === */
+.films-breadcrumb {
+    padding: 10px 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: var(--films-text-dim);
+}
+
+.films-breadcrumb a {
+    color: var(--films-text-dim);
+    text-decoration: none;
+}
+
+.films-breadcrumb a:hover { color: var(--films-gold); }
+.films-breadcrumb span { margin: 0 6px; }
+
+/* === HOOFD CONTENT === */
+.films-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 3rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+/* === SIDEBAR FILTERS === */
+.films-sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 76px;
+}
+
+.films-filter-groep {
+    margin-bottom: 1.5rem;
+}
+
+.films-filter-groep__titel {
+    font-family: var(--films-font-display);
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--films-gold);
+    margin: 0 0 10px;
+}
+
+.films-filter-groep__lijst {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px dashed var(--films-border);
+    padding-bottom: 1.25rem;
+}
+
+.films-filter-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--films-text-muted);
+    transition: color 0.15s;
+}
+
+.films-filter-item:hover { color: var(--films-text); }
+
+.films-filter-item__links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.films-filter-item input[type="checkbox"] {
+    accent-color: var(--films-gold);
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.films-filter-item__count {
+    font-size: 11px;
+    color: var(--films-text-dim);
+}
+
+.films-filter-item--actief {
+    color: var(--films-gold);
+}
+
+/* Datum knoppen */
+.films-datum-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.films-datum-btn {
+    background: var(--films-surface2);
+    border: 1px solid var(--films-border);
+    color: var(--films-text-muted);
+    font-size: 12px;
+    padding: 6px 4px;
+    border-radius: var(--films-radius-sm);
+    cursor: pointer;
+    text-align: center;
+    font-family: var(--films-font-body);
+    transition: all 0.15s;
+}
+
+.films-datum-btn:hover {
+    border-color: var(--films-gold);
+    color: var(--films-gold);
+}
+
+.films-datum-btn--actief {
+    background: var(--films-gold);
+    color: var(--films-bg);
+    border-color: var(--films-gold);
+    font-weight: 600;
+}
+
+/* Tijd knoppen */
+.films-tijd-rij {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px dashed var(--films-border);
+}
+
+.films-tijd-btn {
+    background: var(--films-surface2);
+    border: 1px solid var(--films-border);
+    color: var(--films-text-muted);
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: var(--films-radius-sm);
+    cursor: pointer;
+    font-family: var(--films-font-body);
+    transition: all 0.15s;
+}
+
+.films-tijd-btn:hover {
+    border-color: var(--films-gold);
+    color: var(--films-gold);
+}
+
+.films-tijd-btn--actief {
+    background: var(--films-gold);
+    color: var(--films-bg);
+    border-color: var(--films-gold);
+    font-weight: 600;
+}
+
+/* === HOOFD SECTIE === */
+.films-main {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Titel rij */
+.films-titel-rij {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.films-titel {
+    font-family: var(--films-font-display);
+    font-size: 36px;
+    letter-spacing: 1px;
+    margin: 0;
+    color: var(--films-text);
+}
+
+.films-sort-rij {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.films-sort-label {
+    font-size: 12px;
+    color: var(--films-text-dim);
+}
+
+.films-sort-btn {
+    background: var(--films-surface2);
+    border: 1px solid var(--films-border);
+    color: var(--films-text-muted);
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--films-font-body);
+    transition: all 0.15s;
+}
+
+.films-sort-btn:hover {
+    border-color: var(--films-gold-dim);
+    color: var(--films-text);
+}
+
+.films-sort-btn--actief {
+    background: var(--films-gold);
+    color: var(--films-bg);
+    border-color: var(--films-gold);
+    font-weight: 600;
+}
+
+/* Subtitel + filter tags rij */
+.films-subtitel {
+    font-size: 12px;
+    color: var(--films-text-dim);
+    margin: 0 0 12px;
+}
+
+.films-actieve-filters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+}
+
+.films-tag {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--films-gold);
+    color: var(--films-bg);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.films-tag__x {
+    font-size: 14px;
+    line-height: 1;
+    opacity: 0.7;
+}
+
+.films-tag--filter-btn {
+    background: transparent;
+    border: 1px solid var(--films-border);
+    color: var(--films-text-muted);
+    cursor: pointer;
+    font-family: var(--films-font-body);
+}
+
+.films-tag--filter-btn:hover {
+    border-color: var(--films-gold);
+    color: var(--films-gold);
+}
+
+.films-wis-alle {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--films-text-dim);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.films-wis-alle:hover { color: var(--films-gold); }
+
+/* === FILM GRID === */
+.films-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* === FILM KAART === */
+.film-kaart {
+    background: var(--films-surface);
+    border: 1px solid var(--films-border);
+    border-radius: var(--films-radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.film-kaart:hover {
+    border-color: var(--films-gold-dim);
+    transform: translateY(-2px);
+}
+
+.film-kaart__poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+    background: var(--films-surface2);
+}
+
+.film-kaart__poster--placeholder {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--films-surface2) 0px,
+        var(--films-surface2) 10px,
+        #1a1a1a 10px,
+        #1a1a1a 20px
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--films-text-dim);
+    text-transform: uppercase;
+}
+
+.film-kaart__info {
+    padding: 10px 12px 12px;
+}
+
+.film-kaart__titel-rij {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 3px;
+}
+
+.film-kaart__titel {
+    font-family: var(--films-font-display);
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    color: var(--films-text);
+    margin: 0;
+}
+
+.film-kaart__leeftijd {
+    background: var(--films-surface2);
+    border: 1px solid var(--films-border);
+    color: var(--films-text-muted);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.film-kaart__meta {
+    font-size: 11px;
+    color: var(--films-text-dim);
+    letter-spacing: 0.5px;
+    margin: 0 0 8px;
+}
+
+.film-kaart__balk {
+    height: 3px;
+    background: var(--films-border);
+    border-radius: 2px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.film-kaart__balk-vulling {
+    height: 100%;
+    background: var(--films-gold);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+.film-kaart__tijden {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.film-kaart__tijd {
+    background: var(--films-surface2);
+    border: 1px solid var(--films-border);
+    color: var(--films-text-muted);
+    font-size: 12px;
+    padding: 4px 9px;
+    border-radius: var(--films-radius-sm);
+    cursor: pointer;
+    font-family: var(--films-font-body);
+    transition: all 0.15s;
+}
+
+.film-kaart__tijd:hover {
+    background: var(--films-gold);
+    color: var(--films-bg);
+    border-color: var(--films-gold);
+}
+
+/* === LADEN / SKELETON === */
+.films-skeleton {
+    background: var(--films-surface);
+    border: 1px solid var(--films-border);
+    border-radius: var(--films-radius);
+    overflow: hidden;
+    animation: films-pulse 1.5s ease-in-out infinite;
+}
+
+.films-skeleton__poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: var(--films-surface2);
+}
+
+.films-skeleton__lijn {
+    height: 12px;
+    background: var(--films-surface2);
+    border-radius: 4px;
+    margin: 10px 12px 6px;
+}
+
+.films-skeleton__lijn--kort {
+    width: 60%;
+}
+
+@keyframes films-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* === MEER LADEN KNOP === */
+.films-meer-btn {
+    display: block;
+    margin: 2rem auto 0;
+    background: transparent;
+    border: 1px solid var(--films-border);
+    color: var(--films-text-muted);
+    font-size: 14px;
+    font-family: var(--films-font-body);
+    padding: 12px 32px;
+    border-radius: var(--films-radius);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.films-meer-btn:hover {
+    border-color: var(--films-gold);
+    color: var(--films-gold);
+}
+
+/* === LEEG RESULTAAT === */
+.films-leeg {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--films-text-dim);
+}
+
+.films-leeg__icoon {
+    font-size: 48px;
+    margin-bottom: 1rem;
+}
+
+.films-leeg p {
+    font-size: 15px;
+}
+
+.film-kaart__ster {
+    font-size: 12px;
+    color: var(--films-gold);
+    margin: 0 0 8px;
+}
