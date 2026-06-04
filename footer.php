@@ -9,5 +9,8 @@
 </footer>
 
 <script src="frontend/js/main.js"></script>
+<?php if (isset($huidigePagina) && $huidigePagina === 'login.php'): ?>
+<script src="frontend/js/pages/login.js"></script>
+<?php endif; ?>
 </body>
 </html>
