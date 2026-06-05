@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-$db = new mysqli('localhost', 'root', '', 'jouw_database');
+$db = new mysqli('localhost', 'root', '', 'mbo_cinemas');
 
 $result = $db->query("SELECT * FROM films");
 
