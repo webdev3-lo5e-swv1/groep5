@@ -1,28 +1,25 @@
-/* ===== MBO CINEMAS - FILMS OVERZICHT JS ===== */
-// Alle functies beginnen met films_ om conflicten te voorkomen
+// frontend/js/pages/films.js
+// ─────────────────────────────────────────────────────
+// Gebruikt: async/await, fetch, try/catch, cache (Les 3+4)
+// ─────────────────────────────────────────────────────
+
+// ─── STATE & CACHE ───────────────────────────────────
+const _cache = {}; // Opgeslagen resultaten — niet opnieuw ophalen (Uitstekend)
 
 const filmsState = {
-    films: [],
-    filters: {
-        genres: [],
-        locaties: [],
-        datums: [],
-        tijden: [],
-    },
-    sort: 'populair',
-    pagina: 1,
+    pagina:    1,
     perPagina: 9,
-    isLaden: false,
+    sort:      'datum',
+    isLaden:   false,
+    filters: {
+        genres:   [],
+        locaties: [],
+        datums:   [],
+        tijden:   []
+    }
 };
 
-// ─── INITIALISATIE ───────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-    films_initFilters();
-    films_laadFilms();
-});
-
-
-
+// ─── DATA OPHALEN ────────────────────────────────────
 async function films_laadFilms(reset = false) {
     if (filmsState.isLaden) return;
     filmsState.isLaden = true;
@@ -35,34 +32,52 @@ async function films_laadFilms(reset = false) {
     films_toonSkeletons();
 
     try {
-        // Bouw de query string op basis van actieve filters
         const params = new URLSearchParams({
-            pagina: filmsState.pagina,
+            pagina:    filmsState.pagina,
             per_pagina: filmsState.perPagina,
-            sort: filmsState.sort,
+            sort:      filmsState.sort,
         });
 
-        if (filmsState.filters.genres.length)   params.append('genre',    filmsState.filters.genres.join(','));
-        if (filmsState.filters.locaties.length) params.append('locatie',  filmsState.filters.locaties.join(','));
-        if (filmsState.filters.datums.length)   params.append('datum',    filmsState.filters.datums.join(','));
-        if (filmsState.filters.tijden.length)   params.append('tijd',     filmsState.filters.tijden.join(','));
+        if (filmsState.filters.genres.length)   params.append('genre',   filmsState.filters.genres.join(','));
+        if (filmsState.filters.locaties.length) params.append('locatie', filmsState.filters.locaties.join(','));
+        if (filmsState.filters.datums.length)   params.append('datum',   filmsState.filters.datums.join(','));
+        if (filmsState.filters.tijden.length)   params.append('tijd',    filmsState.filters.tijden.join(','));
 
-        // ↓ Verander dit naar jouw eigen API URL
-        const response = await fetch(`api/films.php?${params}`);
-        const data = await response.json();
+        // Correcte URL naar jouw structuur: backend/api/films.php
+        const url = `backend/api/films.php?${params}`;
+
+        // Cache check — zit het al in geheugen? Dan geen nieuwe fetch
+        let data;
+        if (_cache[url]) {
+            console.log('[cache] gebruikt:', url);
+            data = _cache[url];
+        } else {
+            // await = wacht tot browser klaar is met het request (Les 3)
+            const response = await fetch(url);
+
+            // Check status: 200-299 = succes, anders fout gooien
+            if (!response.ok) {
+                throw new Error(`HTTP fout: ${response.status}`);
+            }
+
+            // Zet JSON string om naar JS object
+            data = await response.json();
+
+            // Sla op in cache zodat we het niet opnieuw ophalen
+            _cache[url] = data;
+        }
 
         films_verwijderSkeletons();
         films_renderFilms(data.films);
         films_updateTeller(data.totaal);
 
-        // Verberg 'laad meer' knop als alles geladen is
         const totaalGeladen = filmsState.pagina * filmsState.perPagina;
         document.getElementById('films-meer-btn').style.display =
             totaalGeladen >= data.totaal ? 'none' : 'block';
 
     } catch (err) {
+        // catch = vang de error op als fetch mislukt (Les 3)
         films_verwijderSkeletons();
-        // Fallback: toon placeholder kaarten voor development
         films_renderDemoFilms();
         console.warn('API niet bereikbaar, demo modus actief:', err);
     }
@@ -70,7 +85,7 @@ async function films_laadFilms(reset = false) {
     filmsState.isLaden = false;
 }
 
-// ─── RENDER ──────────────────────────────────────────────────
+// ─── RENDER ──────────────────────────────────────────
 function films_renderFilms(filmLijst) {
     const grid = document.getElementById('films-grid');
 
@@ -95,7 +110,7 @@ function films_maakKaart(film) {
     kaart.dataset.id = film.id;
 
     const poster = film.poster
-        ? `<img class="film-kaart__poster" src="${film.poster}" alt="${film.titel}" loading="lazy" />`
+        ? `<img class="film-kaart__poster" src="${film.poster}" alt="${film.titel}" loading="lazy">`
         : `<div class="film-kaart__poster--placeholder">Poster</div>`;
 
     const tijdenHTML = (film.tijden || []).map(t =>
@@ -111,9 +126,9 @@ function films_maakKaart(film) {
             </div>
             <p class="film-kaart__meta">${(film.genre || '').toUpperCase()} · ${film.jaar || ''} · ${film.duur || ''}</p>
             <div class="film-kaart__balk">
-                <div class="film-kaart__balk-vulling" style="width: ${film.beoordeling || 0}%"></div>
+                <div class="film-kaart__balk-vulling" style="width:${film.beoordeling || 0}%"></div>
             </div>
-            <p class="film-kaart__ster">⭐ ${(film.beoordeling / 10).toFixed(1)} / 10</p>
+            <p class="film-kaart__ster">⭐ ${((film.beoordeling || 0) / 10).toFixed(1)} / 10</p>
             <div class="film-kaart__tijden">${tijdenHTML}</div>
         </div>`;
 
@@ -126,23 +141,23 @@ function films_maakKaart(film) {
     return kaart;
 }
 
-// Demo kaarten als API niet beschikbaar is (development)
+// Demo kaarten als API niet beschikbaar is
 function films_renderDemoFilms() {
     const demoFilms = Array.from({ length: 9 }, (_, i) => ({
-        id: i + 1,
-        titel: `Film titel ${i + 1}`,
-        genre: 'Thriller',
-        duur: `2u ${Math.floor(Math.random() * 40 + 60)}m`,
-        leeftijd: ['6+', '9+', '12+', '16+'][i % 4],
-        poster: null,
+        id:          i + 1,
+        titel:       `Film titel ${i + 1}`,
+        genre:       'Thriller',
+        duur:        `2u ${Math.floor(Math.random() * 40 + 60)}m`,
+        leeftijd:    ['6+', '9+', '12+', '16+'][i % 4],
+        poster:      null,
         beoordeling: Math.floor(Math.random() * 60 + 30),
-        tijden: ['14:30', '17:45', '20:15', '22:50'],
+        tijden:      ['14:30', '17:45', '20:15', '22:50'],
     }));
     films_renderFilms(demoFilms);
     films_updateTeller(24);
 }
 
-// ─── SKELETON LOADERS ────────────────────────────────────────
+// ─── SKELETON LOADERS ────────────────────────────────
 function films_toonSkeletons() {
     const grid = document.getElementById('films-grid');
     for (let i = 0; i < 6; i++) {
@@ -160,12 +175,11 @@ function films_verwijderSkeletons() {
     document.querySelectorAll('.films-skeleton-item').forEach(el => el.remove());
 }
 
-// ─── FILTERS ─────────────────────────────────────────────────
+// ─── FILTERS ─────────────────────────────────────────
 function films_initFilters() {
-    // Checkboxen voor genre en locatie
     document.querySelectorAll('.films-filter-checkbox').forEach(cb => {
         cb.addEventListener('change', () => {
-            const type  = cb.dataset.type;
+            const type   = cb.dataset.type;
             const waarde = cb.dataset.waarde;
             const lijst  = filmsState.filters[type];
 
@@ -181,7 +195,6 @@ function films_initFilters() {
         });
     });
 
-    // Datum knoppen
     document.querySelectorAll('.films-datum-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             btn.classList.toggle('films-datum-btn--actief');
@@ -194,7 +207,6 @@ function films_initFilters() {
         });
     });
 
-    // Tijd knoppen
     document.querySelectorAll('.films-tijd-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             btn.classList.toggle('films-tijd-btn--actief');
@@ -207,7 +219,6 @@ function films_initFilters() {
         });
     });
 
-    // Sort knoppen
     document.querySelectorAll('.films-sort-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.films-sort-btn').forEach(b => b.classList.remove('films-sort-btn--actief'));
@@ -217,22 +228,25 @@ function films_initFilters() {
         });
     });
 
-    // Meer laden knop
-    document.getElementById('films-meer-btn').addEventListener('click', () => {
-        filmsState.pagina++;
-        films_laadFilms();
-    });
+    const meerBtn = document.getElementById('films-meer-btn');
+    if (meerBtn) {
+        meerBtn.addEventListener('click', () => {
+            filmsState.pagina++;
+            films_laadFilms();
+        });
+    }
 }
 
 function films_updateActieveTags() {
     const container = document.getElementById('films-actieve-tags');
-    const vaste = container.querySelectorAll('.films-tag--filter-btn, .films-wis-alle');
+    if (!container) return;
 
+    const vaste = container.querySelectorAll('.films-tag--filter-btn, .films-wis-alle');
     container.querySelectorAll('.films-tag:not(.films-tag--filter-btn)').forEach(el => el.remove());
 
     const alleFilters = [
-        ...filmsState.filters.genres.map(v => ({ type: 'genres', waarde: v })),
-        ...filmsState.filters.locaties.map(v => ({ type: 'locaties', waarde: v })),
+        ...filmsState.filters.genres.map(v   => ({ type: 'genres',   waarde: v })),
+        ...filmsState.filters.locaties.map(v  => ({ type: 'locaties', waarde: v })),
     ];
 
     alleFilters.forEach(({ type, waarde }) => {
@@ -249,7 +263,6 @@ function films_verwijderFilter(type, waarde) {
     const idx = lijst.indexOf(waarde);
     if (idx > -1) lijst.splice(idx, 1);
 
-    // Uncheck de bijbehorende checkbox
     const cb = document.querySelector(`.films-filter-checkbox[data-type="${type}"][data-waarde="${waarde}"]`);
     if (cb) cb.checked = false;
 
@@ -267,9 +280,9 @@ function films_wisAlleFilters() {
     films_laadFilms(true);
 }
 
-// ─── NAVIGATIE ───────────────────────────────────────────────
+// ─── NAVIGATIE ───────────────────────────────────────
 function films_naarDetail(id) {
-    window.location.href = `film-detail.php?id=${id}`;
+    window.location.href = `film.php?id=${id}`;
 }
 
 function films_selecteerTijd(event, filmId, tijd) {
@@ -281,3 +294,9 @@ function films_updateTeller(totaal) {
     const el = document.getElementById('films-teller');
     if (el) el.textContent = `${totaal} resultaten`;
 }
+
+// ─── START ───────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+    films_initFilters();
+    films_laadFilms();
+});
