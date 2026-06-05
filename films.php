@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<?php include 'includes/header.php'; ?>
+<?php include 'header.php'; ?>
 
  
 
@@ -193,10 +193,10 @@
 </div>
 
 <!-- ─── FOOTER ─── -->
-<?php include 'includes/footer.php'; ?>
+<?php include 'footer.php'; ?>
 
 <!-- Films pagina JavaScript -->
-<script src="js/films.js"></script>
+<script src="frontend/js/pages/films.js"></script>
 
 </body>
 </html>
