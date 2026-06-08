@@ -27,3 +27,10 @@ $huidigePagina = basename($_SERVER['PHP_SELF']);
         <a href="films.php" class="btn-primary">Reserveer</a>
     </p>
 </nav>
+<?php if (isset($_SESSION['user_id'])): ?>
+    <a href="dashboard.php" class="btn-ghost">👤 <?= htmlspecialchars($_SESSION['voornaam']) ?></a>
+    <a href="uitloggen.php" class="btn-ghost">Uitloggen</a>
+<?php else: ?>
+    <a href="login.php" class="btn-ghost">Inloggen</a>
+    <a href="films.php" class="btn-primary">Reserveer</a>
+<?php endif; ?>
