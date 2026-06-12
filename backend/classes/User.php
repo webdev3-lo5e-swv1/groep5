@@ -1,8 +1,10 @@
 <?php
+// backend/classes/User.php
+// Erft van Model
 
-require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/Model.php';
 
-class User
+class User extends Model
 {
     private int    $id;
     private string $voornaam;
@@ -21,54 +23,42 @@ class User
         $this->rol        = $rol;
     }
 
-    // Getters
-    public function getId(): int          { return $this->id; }
+    public function getId(): int           { return $this->id; }
     public function getVoornaam(): string  { return $this->voornaam; }
-    public function getAchternaam(): string{ return $this->achternaam; }
+    public function getAchternaam(): string { return $this->achternaam; }
     public function getNaam(): string      { return $this->voornaam . ' ' . $this->achternaam; }
-    public function getEmail(): string    { return $this->email; }
-    public function getWachtwoord(): string{ return $this->wachtwoord; }
-    public function getRol(): string      { return $this->rol; }
+    public function getEmail(): string     { return $this->email; }
+    public function getWachtwoord(): string { return $this->wachtwoord; }
+    public function getRol(): string       { return $this->rol; }
 
-    //zoek gebruiker op e-mail
+    protected static function vanRij(array $row): static
+    {
+        return new self($row['id'], $row['voornaam'], $row['achternaam'], $row['email'], $row['wachtwoord'], $row['rol'] ?? 'klant');
+    }
+
+    // READ
     public static function findByEmail(string $email): ?self
     {
         try {
-            $db   = Database::getInstance()->getConnection();
-            $stmt = $db->prepare("SELECT id, voornaam, achternaam, email, wachtwoord, rol FROM users WHERE email = ? LIMIT 1");
+            $stmt = self::db()->prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
             $stmt->execute([$email]);
-            $row  = $stmt->fetch();
-            if (!$row) return null;
-            return new self($row['id'], $row['voornaam'], $row['achternaam'], $row['email'], $row['wachtwoord'], $row['rol']);
-        } catch (PDOException $e) {
-            return null;
-        }
+            $row = $stmt->fetch();
+            return $row ? self::vanRij($row) : null;
+        } catch (PDOException $e) { return null; }
     }
 
-    //zoek gebruiker op ID
     public static function findById(int $id): ?self
     {
-        try {
-            $db   = Database::getInstance()->getConnection();
-            $stmt = $db->prepare("SELECT id, voornaam, achternaam, email, wachtwoord, rol FROM users WHERE id = ? LIMIT 1");
-            $stmt->execute([$id]);
-            $row  = $stmt->fetch();
-            if (!$row) return null;
-            return new self($row['id'], $row['voornaam'], $row['achternaam'], $row['email'], $row['wachtwoord'], $row['rol']);
-        } catch (PDOException $e) {
-            return null;
-        }
+        $row = self::zoekOpId('users', $id);
+        return $row ? self::vanRij($row) : null;
     }
 
-    //nieuwe gebruiker aanmaken 
+    // CREATE
     public static function create(string $voornaam, string $achternaam, string $email, string $hashedWachtwoord): bool
     {
         try {
-            $db   = Database::getInstance()->getConnection();
-            $stmt = $db->prepare("INSERT INTO users (voornaam, achternaam, email, wachtwoord, rol) VALUES (?, ?, ?, ?, 'klant')");
+            $stmt = self::db()->prepare("INSERT INTO users (voornaam, achternaam, email, wachtwoord, rol) VALUES (?, ?, ?, ?, 'klant')");
             return $stmt->execute([$voornaam, $achternaam, $email, $hashedWachtwoord]);
-        } catch (PDOException $e) {
-            return false;
-        }
+        } catch (PDOException $e) { return false; }
     }
 }

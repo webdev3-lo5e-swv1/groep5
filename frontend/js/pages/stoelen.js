@@ -1,13 +1,12 @@
 // frontend/js/pages/stoelen.js
-// Stoelenplan interactie — selecteren, totaal berekenen, samenvatting updaten
+// Stoelenplan interactie
 
-// ── State ─────────────────────────────────────────────
-const geselecteerdeStoelen = new Set(); // Set = unieke waarden, geen duplicaten
+const geselecteerdeStoelen = new Set();
 
-// ── Init ──────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
     const checkboxes = document.querySelectorAll('.stoel-checkbox');
     const bestelBtn  = document.getElementById('bestel-btn');
+    if (!bestelBtn) return;
 
     checkboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
@@ -23,36 +22,26 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             updateSamenvatting();
-
-            // Knop activeren zodra er minimaal 1 stoel gekozen is
             bestelBtn.disabled = geselecteerdeStoelen.size === 0;
         });
     });
 });
 
-// ── Samenvatting updaten ──────────────────────────────
 function updateSamenvatting() {
-    const aantalStoelen = geselecteerdeStoelen.size;
-    const totaal        = aantalStoelen * prijsPerStoel; // prijsPerStoel komt uit checkout.php
-
-    // Stoellabels ophalen (rij + nummer) uit de labels
+    const totaal = geselecteerdeStoelen.size * (typeof prijsPerStoel !== 'undefined' ? prijsPerStoel : 0);
     const labels = [];
+
     geselecteerdeStoelen.forEach(function (stoelId) {
         const checkbox = document.querySelector(`.stoel-checkbox[value="${stoelId}"]`);
         if (checkbox) {
-            // Rij staat in het rij-label, nummer in de span van de stoel
             const rijEl    = checkbox.closest('.stoel-rij')?.querySelector('.rij-label');
             const nummerEl = checkbox.closest('.stoel')?.querySelector('span');
-            if (rijEl && nummerEl) {
-                labels.push(rijEl.textContent + nummerEl.textContent);
-            }
+            if (rijEl && nummerEl) labels.push(rijEl.textContent.trim() + nummerEl.textContent.trim());
         }
     });
 
-    // Samenvatting updaten
-    document.getElementById('samenvatting-stoelen').textContent =
-        labels.length > 0 ? labels.join(', ') : '—';
-
-    document.getElementById('samenvatting-totaal').textContent =
-        '€' + totaal.toFixed(2).replace('.', ',');
+    const stoelEl  = document.getElementById('samenvatting-stoelen');
+    const totaalEl = document.getElementById('samenvatting-totaal');
+    if (stoelEl)  stoelEl.textContent  = labels.length > 0 ? labels.join(', ') : '—';
+    if (totaalEl) totaalEl.textContent = '€' + totaal.toFixed(2).replace('.', ',');
 }

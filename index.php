@@ -1,19 +1,22 @@
 <?php
 require_once 'backend/config/db.php';
 
+if (session_status() === PHP_SESSION_NONE) session_start();
+
 $db = Database::getInstance()->getConnection();
 
-$stmt = $db->query("
-    SELECT DISTINCT f.id, f.titel, f.genre, f.duur, f.leeftijd, f.poster
+$films_nu = $db->query("
+    SELECT DISTINCT f.id, f.titel, f.genre, f.duur, f.leeftijd, f.poster,
+           MIN(v.starttijd) as eerste_tijd
     FROM films f
     JOIN voorstellingen v ON f.id = v.film_id
-    WHERE v.datum >= CURDATE()
-    ORDER BY v.datum ASC
+    WHERE v.datum = CURDATE()
+    GROUP BY f.id
+    ORDER BY eerste_tijd ASC
     LIMIT 4
-");
-$films_nu = $stmt->fetchAll();
+")->fetchAll();
 
-$stmt2 = $db->query("
+$films_binnenkort = $db->query("
     SELECT f.id, f.titel, f.poster, MIN(v.datum) as eerste_datum
     FROM films f
     JOIN voorstellingen v ON f.id = v.film_id
@@ -21,18 +24,17 @@ $stmt2 = $db->query("
     GROUP BY f.id
     ORDER BY eerste_datum ASC
     LIMIT 4
-");
-$films_binnenkort = $stmt2->fetchAll();
+")->fetchAll();
 
-$stmt3 = $db->query("
-    SELECT f.*, MIN(v.datum) as eerste_datum
+$featured = $db->query("
+    SELECT f.*, MIN(v.datum) as eerste_datum, MIN(v.starttijd) as eerste_tijd, MIN(v.id) as eerste_voorstelling
     FROM films f
     JOIN voorstellingen v ON f.id = v.film_id
     WHERE v.datum >= CURDATE()
     GROUP BY f.id
+    ORDER BY eerste_datum ASC, eerste_tijd ASC
     LIMIT 1
-");
-$featured = $stmt3->fetch();
+")->fetch();
 
 require_once 'header.php';
 ?>
@@ -40,7 +42,12 @@ require_once 'header.php';
 <?php if ($featured): ?>
 <section class="hero">
     <figure class="hero-video">
-        <figcaption>FEATURED FILM — TRAILER #1</figcaption>
+        <?php if ($featured['poster']): ?>
+            <img src="<?= htmlspecialchars($featured['poster']) ?>"
+                 alt="<?= htmlspecialchars($featured['titel']) ?>"
+                 style="width:100%;height:100%;object-fit:cover;border-radius:6px;">
+        <?php endif; ?>
+        <figcaption>FEATURED FILM — NU IN DE ZAAL</figcaption>
     </figure>
     <article class="hero-info">
         <small>UITGELICHT</small>
@@ -53,18 +60,22 @@ require_once 'header.php';
         </p>
         <p class="hero-buttons">
             <a href="film.php?id=<?= $featured['id'] ?>" class="btn-primary">Kaartjes →</a>
-            <a href="#" class="btn-ghost">Trailer</a>
+            <?php if ($featured['trailer_url']): ?>
+                <a href="<?= htmlspecialchars($featured['trailer_url']) ?>" target="_blank" class="btn-ghost">Trailer</a>
+            <?php else: ?>
+                <a href="#" class="btn-ghost">Trailer</a>
+            <?php endif; ?>
         </p>
-        <label class="hero-doorgaan">
+        <label class="hero-doorgaan" id="hero-doorgaan" style="display:none;">
             <input type="checkbox"> Doorgaan met reservering
-            <small>LocalStorage — 2 kaartjes · Dune Part</small>
+            <small id="hero-doorgaan-info">—</small>
         </label>
     </article>
 </section>
 <?php endif; ?>
 
 <section class="zoek-sectie">
-    <small>3 filters · basisresultaten &nbsp;|&nbsp; genre · locatie · datum</small>
+    <small>Zoek op titel, genre of locatie</small>
     <form class="zoek-balk" method="GET" action="films.php">
         <input type="text" name="zoek" placeholder="Titel of genre...">
         <input type="text" name="locatie" placeholder="Locatie ▾">
@@ -77,7 +88,7 @@ require_once 'header.php';
 <section class="films-sectie">
     <header>
         <h2>Nu in de zaal</h2>
-        <a href="films.php" class="link-alle">13 FILMS · ALLE VESTIGINGEN</a>
+        <a href="films.php" class="link-alle">ALLE FILMS · ALLE VESTIGINGEN</a>
     </header>
     <?php if (empty($films_nu)): ?>
         <p class="geen-films">Geen films beschikbaar.</p>
@@ -87,7 +98,7 @@ require_once 'header.php';
         <li class="film-kaart">
             <figure>
                 <?php if ($film['poster']): ?>
-                    <img src="<?= htmlspecialchars($film['poster']) ?>" alt="<?= htmlspecialchars($film['titel']) ?>">
+                    <img src="<?= htmlspecialchars($film['poster']) ?>" alt="<?= htmlspecialchars($film['titel']) ?>" loading="lazy">
                 <?php else: ?>
                     <span class="poster-placeholder">POSTER</span>
                 <?php endif; ?>
@@ -95,7 +106,7 @@ require_once 'header.php';
             <h3><?= htmlspecialchars($film['titel']) ?></h3>
             <p class="film-meta"><?= htmlspecialchars($film['genre']) ?> · <?= $film['duur'] ?> MIN</p>
             <p class="film-acties">
-                <span class="film-tijd">vanaf --:--</span>
+                <span class="film-tijd"><?= $film['eerste_tijd'] ? substr($film['eerste_tijd'], 0, 5) : '--:--' ?></span>
                 <a href="film.php?id=<?= $film['id'] ?>" class="btn-primary small">Reserveer</a>
             </p>
         </li>
@@ -114,7 +125,7 @@ require_once 'header.php';
         <li class="film-kaart small">
             <figure>
                 <?php if ($film['poster']): ?>
-                    <img src="<?= htmlspecialchars($film['poster']) ?>" alt="<?= htmlspecialchars($film['titel']) ?>">
+                    <img src="<?= htmlspecialchars($film['poster']) ?>" alt="<?= htmlspecialchars($film['titel']) ?>" loading="lazy">
                 <?php else: ?>
                     <span class="poster-placeholder">POSTER</span>
                 <?php endif; ?>
@@ -126,4 +137,5 @@ require_once 'header.php';
     </ul>
 </section>
 
+<script type="module" src="frontend/js/pages/home.js"></script>
 <?php require_once 'footer.php'; ?>

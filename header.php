@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $huidigePagina = basename($_SERVER['PHP_SELF']);
 ?>
 <!DOCTYPE html>
@@ -10,12 +13,11 @@ $huidigePagina = basename($_SERVER['PHP_SELF']);
     <meta name="keywords" content="bioscopen, films, popcorn, cinema, reserveren, kijken">
     <title>MBO Cinemas</title>
     <link rel="stylesheet" href="style/style.css">
-
 </head>
 <body>
 
 <nav class="navbar">
-    <span class="logo"><span class="logo-dot"></span> MBO Cinemas</span>
+    <a href="index.php" class="logo"><span class="logo-dot"></span> MBO Cinemas</a>
     <ul>
         <li><a href="index.php" class="<?= $huidigePagina === 'index.php' ? 'actief' : '' ?>">Films</a></li>
         <li><a href="films.php" class="<?= $huidigePagina === 'films.php' ? 'actief' : '' ?>">Bioscopen</a></li>
@@ -23,14 +25,12 @@ $huidigePagina = basename($_SERVER['PHP_SELF']);
         <li><a href="#">Over ons</a></li>
     </ul>
     <p>
-        <a href="login.php" class="btn-ghost">Inloggen</a>
-        <a href="films.php" class="btn-primary">Reserveer</a>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="dashboard.php" class="btn-ghost">👤 <?= htmlspecialchars($_SESSION['voornaam']) ?></a>
+            <a href="uitloggen.php" class="btn-ghost">Uitloggen</a>
+        <?php else: ?>
+            <a href="login.php" class="btn-ghost <?= $huidigePagina === 'login.php' ? 'actief' : '' ?>">Inloggen</a>
+            <a href="films.php" class="btn-primary">Reserveer</a>
+        <?php endif; ?>
     </p>
 </nav>
-<?php if (isset($_SESSION['user_id'])): ?>
-    <a href="dashboard.php" class="btn-ghost">👤 <?= htmlspecialchars($_SESSION['voornaam']) ?></a>
-    <a href="uitloggen.php" class="btn-ghost">Uitloggen</a>
-<?php else: ?>
-    <a href="login.php" class="btn-ghost">Inloggen</a>
-    <a href="films.php" class="btn-primary">Reserveer</a>
-<?php endif; ?>

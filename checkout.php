@@ -1,22 +1,17 @@
 <?php
-// checkout.php — Stoelen kiezen + reservering afronden
-// Gebruikt: PDO, OOP (Voorstelling, Zaal, Film, Reservering), session, XSS
-
 require_once 'backend/config/db.php';
 require_once 'backend/classes/Film.php';
 require_once 'backend/classes/Voorstelling.php';
 require_once 'backend/classes/Zaal.php';
 require_once 'backend/classes/Reservering.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) session_start();
 
-// Niet ingelogd? Doorsturen
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
 
-// Voorstelling ID ophalen uit URL
 $voorstellingId = isset($_GET['voorstelling']) ? (int) $_GET['voorstelling'] : 0;
 $voorstelling   = Voorstelling::findById($voorstellingId);
 
@@ -25,14 +20,11 @@ if (!$voorstelling) {
     exit;
 }
 
-// Film en zaal ophalen
-$film   = Film::findById($voorstelling->getFilmId());
-$zaal   = Zaal::findById($voorstelling->getZaalId());
+$film    = Film::findById($voorstelling->getFilmId());
+$zaal    = Zaal::findById($voorstelling->getZaalId());
 $stoelen = Zaal::getStoelen($voorstelling->getZaalId());
 $bezet   = Voorstelling::getBezetteStoelen($voorstellingId);
-
-// ── Reservering verwerken ─────────────────────────────
-$error = '';
+$error   = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $geselecteerd = $_POST['stoelen'] ?? [];
@@ -40,20 +32,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($geselecteerd)) {
         $error = 'Selecteer minimaal één stoel.';
     } else {
-        // Stoelen valideren — alleen integers, alleen stoelen van deze zaal
-        $geldige = array_map('intval', $geselecteerd);
+        $geldige      = array_map('intval', $geselecteerd);
         $zaalStoelIds = array_column($stoelen, 'id');
-        $geldige = array_filter($geldige, fn($id) => in_array($id, $zaalStoelIds));
+        $geldige      = array_filter($geldige, fn($id) => in_array($id, $zaalStoelIds));
+        $conflict     = array_intersect($geldige, $bezet);
 
-        // Check: zijn de stoelen nog vrij?
-        $conflict = array_intersect($geldige, $bezet);
         if (!empty($conflict)) {
-            $error = 'Één of meer gekozen stoelen zijn al bezet. Kies andere stoelen.';
+            $error = 'Één of meer gekozen stoelen zijn al bezet.';
         } else {
             $totaal = count($geldige) * $voorstelling->getPrijs();
-            $userId = (int) $_SESSION['user_id'];
-
-            $code = Reservering::create($userId, $voorstellingId, $totaal, $geldige);
+            $code   = Reservering::create((int) $_SESSION['user_id'], $voorstellingId, $totaal, $geldige);
 
             if ($code) {
                 header('Location: bevestiging.php?code=' . urlencode($code));
@@ -81,7 +69,6 @@ require_once 'header.php';
 
     <section class="checkout-grid">
 
-        <!-- Stoelenplan -->
         <article class="stoelenplan-sectie">
             <p class="scherm-label">🎬 SCHERM</p>
             <div class="scherm-balk"></div>
@@ -89,11 +76,8 @@ require_once 'header.php';
             <form method="POST" id="checkout-form">
                 <ul class="stoelenplan" id="stoelenplan">
                     <?php
-                    // Groepeer stoelen per rij
                     $perRij = [];
-                    foreach ($stoelen as $stoel) {
-                        $perRij[$stoel['rij']][] = $stoel;
-                    }
+                    foreach ($stoelen as $stoel) { $perRij[$stoel['rij']][] = $stoel; }
                     ?>
                     <?php foreach ($perRij as $rij => $rijStoelen): ?>
                         <li class="stoel-rij">
@@ -103,11 +87,8 @@ require_once 'header.php';
                                     <?php $isBezet = in_array($stoel['id'], $bezet); ?>
                                     <li>
                                         <label class="stoel stoel--<?= htmlspecialchars($stoel['type']) ?> <?= $isBezet ? 'stoel--bezet' : '' ?>">
-                                            <input type="checkbox"
-                                                   name="stoelen[]"
-                                                   value="<?= $stoel['id'] ?>"
-                                                   class="stoel-checkbox"
-                                                   data-prijs="<?= $voorstelling->getPrijs() ?>"
+                                            <input type="checkbox" name="stoelen[]" value="<?= $stoel['id'] ?>"
+                                                   class="stoel-checkbox" data-prijs="<?= $voorstelling->getPrijs() ?>"
                                                    <?= $isBezet ? 'disabled' : '' ?>>
                                             <span><?= $stoel['nummer'] ?></span>
                                         </label>
@@ -118,7 +99,6 @@ require_once 'header.php';
                     <?php endforeach; ?>
                 </ul>
 
-                <!-- Legenda -->
                 <ul class="stoel-legenda">
                     <li><span class="legenda-stoel legenda-stoel--vrij"></span> Vrij</li>
                     <li><span class="legenda-stoel legenda-stoel--gekozen"></span> Gekozen</li>
@@ -128,23 +108,21 @@ require_once 'header.php';
             </form>
         </article>
 
-        <!-- Samenvatting -->
         <aside class="checkout-samenvatting">
             <?php if ($film->getPoster()): ?>
                 <figure class="samenvatting-poster">
-                    <img src="<?= htmlspecialchars($film->getPoster()) ?>"
-                         alt="<?= htmlspecialchars($film->getTitel()) ?>">
+                    <img src="<?= htmlspecialchars($film->getPoster()) ?>" alt="<?= htmlspecialchars($film->getTitel()) ?>">
                 </figure>
             <?php endif; ?>
 
             <h2><?= htmlspecialchars($film->getTitel()) ?></h2>
 
             <ul class="samenvatting-details">
-                <li><span>Datum</span><strong><?= $voorstelling->getDatumFormatted() ?></strong></li>
-                <li><span>Tijd</span><strong><?= $voorstelling->getTijdFormatted() ?></strong></li>
-                <li><span>Zaal</span><strong><?= htmlspecialchars($zaal->getNaam()) ?></strong></li>
-                <li><span>Stoelen</span><strong id="samenvatting-stoelen">—</strong></li>
-                <li><span>Prijs p/s</span><strong>€<?= number_format($voorstelling->getPrijs(), 2, ',', '.') ?></strong></li>
+                <li><span>📅 Datum</span><strong><?= $voorstelling->getDatumFormatted() ?></strong></li>
+                <li><span>🕐 Tijd</span><strong><?= $voorstelling->getTijdFormatted() ?></strong></li>
+                <li><span>📍 Zaal</span><strong><?= htmlspecialchars($zaal->getNaam()) ?></strong></li>
+                <li><span>💺 Stoelen</span><strong id="samenvatting-stoelen">—</strong></li>
+                <li><span>💶 Prijs p/s</span><strong>€<?= number_format($voorstelling->getPrijs(), 2, ',', '.') ?></strong></li>
             </ul>
 
             <hr class="samenvatting-lijn">
@@ -157,16 +135,14 @@ require_once 'header.php';
                 Reserveer nu
             </button>
 
-            <p class="checkout-info">Je bent ingelogd als <strong><?= htmlspecialchars($_SESSION['voornaam']) ?></strong></p>
+            <p class="checkout-info">Ingelogd als <strong><?= htmlspecialchars($_SESSION['voornaam']) ?></strong></p>
         </aside>
 
     </section>
 
 </main>
 
-<script>
-    // Prijs per stoel doorgeven aan JS
-    const prijsPerStoel = <?= $voorstelling->getPrijs() ?>;
-</script>
+<script>const prijsPerStoel = <?= $voorstelling->getPrijs() ?>;</script>
 <script src="frontend/js/pages/stoelen.js"></script>
+<script type="module" src="frontend/js/pages/checkout.js"></script>
 <?php require_once 'footer.php'; ?>
