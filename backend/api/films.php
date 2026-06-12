@@ -27,9 +27,12 @@ try {
 
     if (!empty($genre)) {
         $genres = explode(',', $genre);
-            $genreCondities = array_map(fn($g) => "f.genre LIKE ?", $genres);
-            $where[] = '(' . implode(' OR ', $genreCondities) . ')';
-        foreach ($genres as $g) { $params[] = '%' . trim($g) . '%'; }
+        $genreCondities = array();
+        foreach ($genres as $g) {
+            $genreCondities[] = "f.genre LIKE ?";
+            $params[] = '%' . trim($g) . '%';
+        }
+        $where[] = '(' . implode(' OR ', $genreCondities) . ')';
     }
 
         if (!empty($datum)) {
@@ -45,11 +48,11 @@ try {
 
     $whereSQL = 'WHERE ' . implode(' AND ', $where);
 
-        $orderSQL = match($sort) {
-            'titel'  => 'f.titel ASC',
-            'rating' => 'f.titel ASC',
-            default  => 'eerste_datum ASC, f.titel ASC'
-        };
+    if ($sort === 'titel') {
+        $orderSQL = 'f.titel ASC';
+    } else {
+        $orderSQL = 'eerste_datum ASC, f.titel ASC';
+    }
 
         // Totaal tellen voor paginering
         $countStmt = $db->prepare("

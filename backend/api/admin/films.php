@@ -20,7 +20,10 @@ try {
 
     if (!empty($genre)) {
         $genres    = explode(',', $genre);
-        $condities = array_map(fn($g) => "f.genre LIKE ?", $genres);
+        $condities = array();
+        foreach ($genres as $g) {
+            $condities[] = "f.genre LIKE ?";
+        }
         $where[]   = '(' . implode(' OR ', $condities) . ')';
         foreach ($genres as $g) { $params[] = '%' . trim($g) . '%'; }
     }
