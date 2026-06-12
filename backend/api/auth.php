@@ -8,16 +8,23 @@ if (session_status() === PHP_SESSION_NONE) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_destroy();
-    echo json_encode(['success' => true, 'bericht' => 'Uitgelogd']);
+    echo json_encode(array('success' => true, 'bericht' => 'Uitgelogd'));
 } else {
     // GET: check of gebruiker ingelogd is
-    echo json_encode([
-        'success'    => true,
-        'ingelogd'   => isset($_SESSION['user_id']),
-        'gebruiker'  => isset($_SESSION['user_id']) ? [
+    $ingelogd = isset($_SESSION['user_id']);
+    $gebruiker = null;
+    if ($ingelogd) {
+        $voornaam = isset($_SESSION['voornaam']) ? $_SESSION['voornaam'] : '';
+        $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : 'klant';
+        $gebruiker = array(
             'id'       => $_SESSION['user_id'],
-            'voornaam' => $_SESSION['voornaam'] ?? '',
-            'rol'      => $_SESSION['rol'] ?? 'klant'
-        ] : null
-    ]);
+            'voornaam' => $voornaam,
+            'rol'      => $rol
+        );
+    }
+    echo json_encode(array(
+        'success'    => true,
+        'ingelogd'   => $ingelogd,
+        'gebruiker'  => $gebruiker
+    ));
 }

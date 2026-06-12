@@ -7,16 +7,16 @@ require_once __DIR__ . '/../../../config/db.php';
 try {
     $db = Database::getInstance()->getConnection();
 
-    $pagina    = max(1, (int) ($_GET['pagina']    ?? 1));
-    $perPagina = min(24, (int) ($_GET['per_pagina'] ?? 9));
+    $pagina    = max(1, (int) (isset($_GET['pagina']) ? $_GET['pagina'] : 1));
+    $perPagina = min(24, (int) (isset($_GET['per_pagina']) ? $_GET['per_pagina'] : 9));
     $offset    = ($pagina - 1) * $perPagina;
-    $sort      = $_GET['sort']  ?? 'datum';
-    $genre     = $_GET['genre'] ?? '';
-    $datum     = $_GET['datum'] ?? '';
-    $tijd      = $_GET['tijd']  ?? '';
+    $sort      = isset($_GET['sort'])  ? $_GET['sort']  : 'datum';
+    $genre     = isset($_GET['genre']) ? $_GET['genre'] : '';
+    $datum     = isset($_GET['datum']) ? $_GET['datum'] : '';
+    $tijd      = isset($_GET['tijd'])  ? $_GET['tijd']  : '';
 
-    $where  = ["v.datum >= CURDATE()"];
-    $params = [];
+    $where  = array("v.datum >= CURDATE()");
+    $params = array();
 
     if (!empty($genre)) {
         $genres    = explode(',', $genre);
@@ -60,24 +60,26 @@ try {
     $stmt->execute($params);
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $films = [];
+    $films = array();
     foreach ($rows as $row) {
-        $tijden = [];
+        $tijden = array();
         if (!empty($row['tijden_raw'])) {
             foreach (explode(',', $row['tijden_raw']) as $t) {
                 $p = explode(':', $t, 2);
-                if (count($p) === 2) $tijden[] = ['voorstelling_id' => (int)$p[0], 'tijd' => $p[1]];
+                if (count($p) === 2) {
+                    $tijden[] = array('voorstelling_id' => (int)$p[0], 'tijd' => $p[1]);
+                }
             }
         }
-        $films[] = [
+        $films[] = array(
             'id'       => (int) $row['id'],
             'titel'    => $row['titel'],
-            'genre'    => $row['genre'] ?? '',
+            'genre'    => isset($row['genre']) ? $row['genre'] : '',
             'duur'     => (int) $row['duur'],
-            'leeftijd' => $row['leeftijd'] ?? '',
-            'poster'   => $row['poster'] ?? null,
-            'tijden'   => $tijden,
-        ];
+            'leeftijd' => isset($row['leeftijd']) ? $row['leeftijd'] : '',
+            'poster'   => isset($row['poster']) ? $row['poster'] : null,
+            'tijden'   => $tijden
+        );
     }
 
     echo json_encode(['success' => true, 'films' => $films, 'totaal' => $totaal]);

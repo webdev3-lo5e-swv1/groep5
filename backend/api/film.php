@@ -13,7 +13,7 @@ $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 if (!$id) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Geen ID opgegeven']);
+    echo json_encode(array('success' => false, 'message' => 'Geen ID opgegeven'));
     exit;
 }
 
@@ -21,15 +21,15 @@ $film = Film::findById($id);
 
 if (!$film) {
     http_response_code(404);
-    echo json_encode(['success' => false, 'message' => 'Film niet gevonden']);
+    echo json_encode(array('success' => false, 'message' => 'Film niet gevonden'));
     exit;
 }
 
 $voorstellingen = Voorstelling::vanFilm($id);
 
-echo json_encode([
+echo json_encode(array(
     'success' => true,
-    'data'    => [
+    'data'    => array(
         'id'             => $film->getId(),
         'titel'          => $film->getTitel(),
         'beschrijving'   => $film->getBeschrijving(),
@@ -43,5 +43,5 @@ echo json_encode([
         'poster'         => $film->getPoster(),
         'trailer_url'    => $film->getTrailerUrl(),
         'voorstellingen' => $voorstellingen
-    ]
-]);
+    )
+));

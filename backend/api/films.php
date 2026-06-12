@@ -1,4 +1,13 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+
+// Log fouten naar error_log in plaats van uit te voeren
+set_error_handler(function($errno, $errstr, $errfile, $errline) {
+    error_log("PHP Error [$errno]: $errstr in $errfile on line $errline");
+    return false;
+});
+
 // backend/api/films.php
 // Geeft films terug als JSON — gebruikt door films.js
 // Rubric: Datacommunicatie endpoint, PDO, prepared statements
@@ -14,16 +23,16 @@ try {
     $db = Database::getInstance()->getConnection();
 
     if ($methode === 'GET') {
-    $pagina    = max(1, (int) ($_GET['pagina']    ?? 1));
-    $perPagina = min(24, (int) ($_GET['per_pagina'] ?? 9));
-    $offset    = ($pagina - 1) * $perPagina;
-    $sort      = $_GET['sort']  ?? 'datum';
-    $genre     = $_GET['genre'] ?? '';
-    $datum     = $_GET['datum'] ?? '';
-    $tijd      = $_GET['tijd']  ?? '';
+        $pagina    = max(1, (int) (isset($_GET['pagina']) ? $_GET['pagina'] : 1));
+        $perPagina = min(24, (int) (isset($_GET['per_pagina']) ? $_GET['per_pagina'] : 9));
+        $offset    = ($pagina - 1) * $perPagina;
+        $sort      = isset($_GET['sort'])  ? $_GET['sort']  : 'datum';
+        $genre     = isset($_GET['genre']) ? $_GET['genre'] : '';
+        $datum     = isset($_GET['datum']) ? $_GET['datum'] : '';
+        $tijd      = isset($_GET['tijd'])  ? $_GET['tijd']  : '';
 
-    $where  = ["v.datum >= CURDATE()"];
-    $params = [];
+        $where  = array("v.datum >= CURDATE()");
+        $params = array();
 
     if (!empty($genre)) {
         $genres = explode(',', $genre);
@@ -80,47 +89,47 @@ try {
         LIMIT $perPagina OFFSET $offset
     ");
     $stmt->execute($params);
-        $films = $stmt->fetchAll();
+    $films = $stmt->fetchAll();
 
-        // Tijden als array met voorstelling ID erbij
-        foreach ($films as &$film) {
-        $tijden = [];
-            if ($film['tijden_raw']) {
-                foreach (explode(',', $film['tijden_raw']) as $t) {
-                    [$vid, $tijd_str] = explode('|', $t);
-                    $tijden[] = ['voorstelling_id' => (int)$vid, 'tijd' => $tijd_str];
+    // Tijden als array met voorstelling ID erbij
+    foreach ($films as &$film) {
+        $tijden = array();
+        if ($film['tijden_raw']) {
+            foreach (explode(',', $film['tijden_raw']) as $t) {
+                list($vid, $tijd_str) = explode('|', $t);
+                $tijden[] = array('voorstelling_id' => (int)$vid, 'tijd' => $tijd_str);
             }
         }
-            $film['tijden']      = $tijden;
-            $film['beoordeling'] = 75; // placeholder
-            unset($film['tijden_raw']);
-        }
+        $film['tijden']      = $tijden;
+        $film['beoordeling'] = 75; // placeholder
+        unset($film['tijden_raw']);
+    }
 
-        // films.js verwacht: { films: [...], totaal: N }
-        echo json_encode(['success' => true, 'films' => $films, 'totaal' => $totaal, 'pagina' => $pagina]);
+    // films.js verwacht: { films: [...], totaal: N }
+    echo json_encode(array('success' => true, 'films' => $films, 'totaal' => $totaal, 'pagina' => $pagina));
 
     } elseif ($methode === 'POST') {
         $body = json_decode(file_get_contents('php://input'), true);
         if (empty($body['titel']) || empty($body['duur'])) {
             http_response_code(400);
-            echo json_encode(['success' => false, 'message' => 'Verplichte velden ontbreken']);
+            echo json_encode(array('success' => false, 'message' => 'Verplichte velden ontbreken'));
             exit;
         }
         $stmt = $db->prepare("INSERT INTO films (titel, genre, duur, leeftijd, beschrijving, poster) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->execute([
+        $stmt->execute(array(
             htmlspecialchars($body['titel']),
-            htmlspecialchars($body['genre'] ?? ''),
+            htmlspecialchars(isset($body['genre']) ? $body['genre'] : ''),
             (int) $body['duur'],
-            htmlspecialchars($body['leeftijd'] ?? ''),
-            htmlspecialchars($body['beschrijving'] ?? ''),
-            $body['poster'] ?? null
-        ]);
-        echo json_encode(['success' => true, 'message' => 'Film toegevoegd', 'id' => $db->lastInsertId()]);
+            htmlspecialchars(isset($body['leeftijd']) ? $body['leeftijd'] : ''),
+            htmlspecialchars(isset($body['beschrijving']) ? $body['beschrijving'] : ''),
+            isset($body['poster']) ? $body['poster'] : null
+        ));
+        echo json_encode(array('success' => true, 'message' => 'Film toegevoegd', 'id' => $db->lastInsertId()));
     } else {
         http_response_code(405);
-        echo json_encode(['success' => false, 'message' => 'Methode niet toegestaan']);
+        echo json_encode(array('success' => false, 'message' => 'Methode niet toegestaan'));
     }
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Databasefout: ' . $e->getMessage()]);
+    echo json_encode(array('success' => false, 'message' => 'Databasefout: ' . $e->getMessage()));
 }
