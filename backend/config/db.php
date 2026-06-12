@@ -22,7 +22,8 @@ class Database {
                 ]
             );
         } catch (PDOException $e) {
-            die("Database verbinding mislukt: " . $e->getMessage());
+            // Laat de fout doorstromen zodat API endpoints JSON kunnen teruggeven
+            throw $e;
         }
     }
 
