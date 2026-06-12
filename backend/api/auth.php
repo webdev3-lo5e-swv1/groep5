@@ -1,7 +1,4 @@
 <?php
-// backend/api/auth.php
-// API endpoint voor uitloggen via fetch (optioneel)
-// Gebruik: fetch('backend/api/auth.php', { method: 'POST' })
 
 header('Content-Type: application/json');
 

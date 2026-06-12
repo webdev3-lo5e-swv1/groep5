@@ -1,6 +1,5 @@
 <?php
-// admin-reserveringen.php — Reserveringen beheren
-// Gebruikt: PDO, admin middleware, XSS
+
 
 require_once 'backend/config/db.php';
 require_once 'backend/middleware/admin_check.php';

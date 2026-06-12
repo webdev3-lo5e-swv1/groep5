@@ -1,6 +1,5 @@
 <?php
-// admin-planning.php — Voorstellingen beheren (CRUD)
-// Gebruikt: PDO, OOP, admin middleware, XSS
+
 
 require_once 'backend/config/db.php';
 require_once 'backend/classes/Film.php';

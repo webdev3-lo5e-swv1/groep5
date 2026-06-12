@@ -70,7 +70,7 @@ require_once 'header.php';
     <section class="checkout-grid">
 
         <article class="stoelenplan-sectie">
-            <p class="scherm-label">🎬 SCHERM</p>
+            <p class="scherm-label">SCHERM</p>
             <div class="scherm-balk"></div>
 
             <form method="POST" id="checkout-form">
@@ -118,11 +118,11 @@ require_once 'header.php';
             <h2><?= htmlspecialchars($film->getTitel()) ?></h2>
 
             <ul class="samenvatting-details">
-                <li><span>📅 Datum</span><strong><?= $voorstelling->getDatumFormatted() ?></strong></li>
-                <li><span>🕐 Tijd</span><strong><?= $voorstelling->getTijdFormatted() ?></strong></li>
-                <li><span>📍 Zaal</span><strong><?= htmlspecialchars($zaal->getNaam()) ?></strong></li>
-                <li><span>💺 Stoelen</span><strong id="samenvatting-stoelen">—</strong></li>
-                <li><span>💶 Prijs p/s</span><strong>€<?= number_format($voorstelling->getPrijs(), 2, ',', '.') ?></strong></li>
+                <li><span> Datum</span><strong><?= $voorstelling->getDatumFormatted() ?></strong></li>
+                <li><span> Tijd</span><strong><?= $voorstelling->getTijdFormatted() ?></strong></li>
+                <li><span> Zaal</span><strong><?= htmlspecialchars($zaal->getNaam()) ?></strong></li>
+                <li><span> Stoelen</span><strong id="samenvatting-stoelen">—</strong></li>
+                <li><span> Prijs p/s</span><strong>€<?= number_format($voorstelling->getPrijs(), 2, ',', '.') ?></strong></li>
             </ul>
 
             <hr class="samenvatting-lijn">

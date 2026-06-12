@@ -1,8 +1,4 @@
-// frontend/js/pages/admin.js
-// Admin panel JS — bevestigingen, live zoeken in tabellen
-// Rubric: JS OOP (AdminTabel class), ES Modules
 
-// ── JS OOP: AdminTabel class ──────────────────────────
 class AdminTabel {
     #tabelId;
     #rijen;

@@ -1,6 +1,4 @@
-// frontend/js/storage.js
-// ES Module voor localStorage — reservering bewaren zodat gebruiker kan doorgaan
-// Rubric: ES Modules (export/import)
+
 
 const STORAGE_KEY = 'mbo_lopende_reservering';
 

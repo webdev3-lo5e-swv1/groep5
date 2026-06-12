@@ -1,6 +1,5 @@
 <?php
-// admin-films.php — Films beheren (CRUD)
-// Gebruikt: PDO, OOP (Film class), admin middleware, XSS
+
 
 require_once 'backend/config/db.php';
 require_once 'backend/classes/Film.php';

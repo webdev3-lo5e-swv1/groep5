@@ -1,6 +1,5 @@
 <?php
-// bevestiging.php — Bevestigingspagina na reservering
-// Gebruikt: PDO, OOP (Reservering class), session, XSS
+
 
 require_once 'backend/config/db.php';
 require_once 'backend/classes/Reservering.php';

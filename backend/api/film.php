@@ -1,6 +1,4 @@
 <?php
-// backend/api/films.php
-// Geeft films terug als JSON met paginering, filters, sortering
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');

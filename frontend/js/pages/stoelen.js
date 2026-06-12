@@ -1,6 +1,3 @@
-// frontend/js/pages/stoelen.js
-// Stoelenplan interactie
-
 const geselecteerdeStoelen = new Set();
 
 document.addEventListener('DOMContentLoaded', function () {

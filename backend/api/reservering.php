@@ -1,6 +1,4 @@
 <?php
-// backend/api/reservering.php
-// Reservering aanmaken via API (POST) of ophalen (GET)
 
 header('Content-Type: application/json');
 

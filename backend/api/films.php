@@ -1,6 +1,4 @@
 <?php
-// Locatie: backend/api/films.php
-// PHP geeft JSON terug — wordt aangeroepen vanuit JavaScript via fetch
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');

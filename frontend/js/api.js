@@ -1,17 +1,4 @@
-// frontend/js/api.js
-// ─────────────────────────────────────────────────────
-// Dit is de centrale API module — alle fetch calls gaan
-// via dit bestand. Andere JS bestanden importeren dit.
-//
-// Wat je hier ziet:
-//  - async/await  (Les 3: asynchroon JS)
-//  - try/catch    (Les 3: errors opvangen)
-//  - fetch        (Les 3+4: data ophalen en sturen)
-//  - cache        (Uitstekend criterium: niet opnieuw ophalen)
-// ─────────────────────────────────────────────────────
 
-// Cache object — sla al opgehaalde data op in geheugen
-// Zo hoef je niet elke keer opnieuw te fetchen (Uitstekend)
 const cache = {};
 
 // ── Stap 1: Basis fetch functie ───────────────────────
@@ -79,6 +66,5 @@ async function apiPost(url, data) {
     }
 }
 
-// ── Exporteer zodat andere bestanden het kunnen gebruiken ──
-// (ES Modules — Les 2: modules met import/export)
+
 export { apiGet, apiPost };

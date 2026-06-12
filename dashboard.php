@@ -1,6 +1,5 @@
 <?php
-// dashboard.php — Gebruikersdashboard
-// Gebruikt: PDO, OOP, session, XSS-beveiliging
+
 
 require_once 'backend/config/db.php';
 require_once 'backend/classes/Reservering.php';
