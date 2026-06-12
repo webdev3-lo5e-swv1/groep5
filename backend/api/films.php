@@ -14,36 +14,36 @@ try {
     $db = Database::getInstance()->getConnection();
 
     if ($methode === 'GET') {
-        $pagina    = max(1, (int) ($_GET['pagina']    ?? 1));
-        $perPagina = min(24, (int) ($_GET['per_pagina'] ?? 9));
-        $offset    = ($pagina - 1) * $perPagina;
-        $sort      = $_GET['sort']  ?? 'datum';
-        $genre     = $_GET['genre'] ?? '';
-        $datum     = $_GET['datum'] ?? '';
-        $tijd      = $_GET['tijd']  ?? '';
+    $pagina    = max(1, (int) ($_GET['pagina']    ?? 1));
+    $perPagina = min(24, (int) ($_GET['per_pagina'] ?? 9));
+    $offset    = ($pagina - 1) * $perPagina;
+    $sort      = $_GET['sort']  ?? 'datum';
+    $genre     = $_GET['genre'] ?? '';
+    $datum     = $_GET['datum'] ?? '';
+    $tijd      = $_GET['tijd']  ?? '';
 
-        $where  = ["v.datum >= CURDATE()"];
-        $params = [];
+    $where  = ["v.datum >= CURDATE()"];
+    $params = [];
 
-        if (!empty($genre)) {
-            $genres = explode(',', $genre);
+    if (!empty($genre)) {
+        $genres = explode(',', $genre);
             $genreCondities = array_map(fn($g) => "f.genre LIKE ?", $genres);
             $where[] = '(' . implode(' OR ', $genreCondities) . ')';
-            foreach ($genres as $g) { $params[] = '%' . trim($g) . '%'; }
-        }
+        foreach ($genres as $g) { $params[] = '%' . trim($g) . '%'; }
+    }
 
         if (!empty($datum)) {
             $where[] = "v.datum = ?";
             $params[] = $datum;
         }
 
-        if (!empty($tijd)) {
+    if (!empty($tijd)) {
             if ($tijd === 'ochtend')     $where[] = "v.starttijd < '12:00'";
             elseif ($tijd === 'middag')  $where[] = "v.starttijd >= '12:00' AND v.starttijd < '17:00'";
             elseif ($tijd === 'avond')   $where[] = "v.starttijd >= '17:00'";
-        }
+    }
 
-        $whereSQL = 'WHERE ' . implode(' AND ', $where);
+    $whereSQL = 'WHERE ' . implode(' AND ', $where);
 
         $orderSQL = match($sort) {
             'titel'  => 'f.titel ASC',
@@ -62,32 +62,32 @@ try {
         $totaal = (int) $countStmt->fetchColumn();
 
         // Films ophalen met tijden en poster
-        $stmt = $db->prepare("
-            SELECT f.id, f.titel, f.genre, f.duur, f.leeftijd, f.poster,
-                   MIN(v.datum) as eerste_datum,
+    $stmt = $db->prepare("
+        SELECT f.id, f.titel, f.genre, f.duur, f.leeftijd, f.poster,
+               MIN(v.datum) as eerste_datum,
                    GROUP_CONCAT(
                        DISTINCT CONCAT(v.id, '|', TIME_FORMAT(v.starttijd, '%H:%i'))
                        ORDER BY v.starttijd ASC
                    ) as tijden_raw
-            FROM films f
-            JOIN voorstellingen v ON f.id = v.film_id
-            $whereSQL
+        FROM films f
+        JOIN voorstellingen v ON f.id = v.film_id
+        $whereSQL
             GROUP BY f.id
-            ORDER BY $orderSQL
-            LIMIT $perPagina OFFSET $offset
-        ");
-        $stmt->execute($params);
+        ORDER BY $orderSQL
+        LIMIT $perPagina OFFSET $offset
+    ");
+    $stmt->execute($params);
         $films = $stmt->fetchAll();
 
         // Tijden als array met voorstelling ID erbij
         foreach ($films as &$film) {
-            $tijden = [];
+        $tijden = [];
             if ($film['tijden_raw']) {
                 foreach (explode(',', $film['tijden_raw']) as $t) {
                     [$vid, $tijd_str] = explode('|', $t);
                     $tijden[] = ['voorstelling_id' => (int)$vid, 'tijd' => $tijd_str];
-                }
             }
+        }
             $film['tijden']      = $tijden;
             $film['beoordeling'] = 75; // placeholder
             unset($film['tijden_raw']);
