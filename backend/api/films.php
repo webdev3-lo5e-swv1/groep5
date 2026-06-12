@@ -1,4 +1,7 @@
 <?php
+// Start output buffering to capture all output
+ob_start();
+
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
@@ -133,3 +136,6 @@ try {
     http_response_code(500);
     echo json_encode(array('success' => false, 'message' => 'Databasefout: ' . $e->getMessage()));
 }
+
+// Flush output buffer
+ob_end_flush();
