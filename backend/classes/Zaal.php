@@ -2,7 +2,7 @@
 // backend/classes/Zaal.php
 // Erft van Model
 
-require_once __DIR__ . '/Model.php';
+require_once dirname(__FILE__) . '/Model.php';
 
 class Zaal extends Model
 {

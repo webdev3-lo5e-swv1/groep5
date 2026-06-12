@@ -5,8 +5,8 @@ header('Content-Type: application/json');
 
 if (session_status() === PHP_SESSION_NONE) session_start();
 
-require_once __DIR__ . '/../../../config/db.php';
-require_once __DIR__ . '/../../../classes/Reservering.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/config/db.php';
+require_once dirname(dirname(dirname(__FILE__))) . '/classes/Reservering.php';
 
 $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : '';
 if (!isset($_SESSION['user_id']) || $rol !== 'medewerker') {

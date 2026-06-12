@@ -18,7 +18,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-require_once __DIR__ . '/../../../config/db.php';
+require_once dirname(dirname(__FILE__)) . '/config/db.php';
 
 $methode = $_SERVER['REQUEST_METHOD'];
 

@@ -3,7 +3,7 @@
 // Abstracte basisklasse — Film, User, Reservering, Voorstelling, Zaal erven hiervan
 // Rubric: "Abstracte databaseklasse" + "Overerving toegepast"
 
-require_once __DIR__ . '/../config/db.php';
+require_once dirname(__FILE__) . '/../config/db.php';
 
 abstract class Model
 {

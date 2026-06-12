@@ -5,9 +5,9 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-require_once __DIR__ . '/../../config/db.php';
-require_once __DIR__ . '/../../classes/Film.php';
-require_once __DIR__ . '/../../classes/Voorstelling.php';
+require_once dirname(dirname(__FILE__)) . '/config/db.php';
+require_once dirname(dirname(__FILE__)) . '/classes/Film.php';
+require_once dirname(dirname(__FILE__)) . '/classes/Voorstelling.php';
 
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
