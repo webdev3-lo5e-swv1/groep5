@@ -2,7 +2,7 @@
 // backend/classes/Reservering.php
 // Erft van Model
 
-require_once __DIR__ . '\\Model.php';
+require_once __DIR__ . '/Model.php';
 
 class Reservering extends Model
 {
