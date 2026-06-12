@@ -2,7 +2,7 @@
 // backend/classes/User.php
 // Erft van Model
 
-require_once __DIR__ . '/Model.php';
+require_once __DIR__ . '\Model.php';
 
 class User extends Model
 {

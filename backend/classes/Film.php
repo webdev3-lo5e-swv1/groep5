@@ -2,7 +2,7 @@
 // backend/classes/Film.php
 // Erft van Model (abstracte basisklasse)
 
-require_once __DIR__ . '/Model.php';
+require_once __DIR__ . '\Model.php';
 
 class Film extends Model
 {
